@@ -28,9 +28,9 @@ To try the latest features, add `master-dev` as version. But be warned, this bra
 
 ## Services ##
 
-|   | Version | General | Track | Artist | Album |
-|---|:-------:|:-------:|:-----:|:------:|:-----:|
-|Spotify | 0.1 | X | X | X | X |
-|VocaDB  | 0.1 | X | X | X | X |
-|MiscBrainz | 0.1 | X | X | X | X |
-|Echonest   | 0.1 | X | X | X | X |
+|   | Version | General | Track | Artist | Album | Comments |
+|---|:-------:|:-------:|:-----:|:------:|:-----:|:--------:|
+|Spotify | 0.1 | X | X | X | X ||
+|VocaDB  | 0.1 | X | X | X | X ||
+|MusicBrains | 0.1 | X | X | X | X ||
+|~~Echonest~~   | X | X | X | X | X | Service cancelled in favor of Spotify |
