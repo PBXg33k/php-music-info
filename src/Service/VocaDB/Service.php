@@ -3,6 +3,9 @@ namespace Pbxg33k\MusicInfo\Service\VocaDB;
 
 use Pbxg33k\MusicInfo\Service\BaseService;
 use Pbxg33k\VocaDB\Client as VocaDBClient;
+use Pbxg33k\VocaDB\Album;
+use Pbxg33k\VocaDB\Artist;
+use Pbxg33k\VocaDB\Song;
 
 class Service extends BaseService
 {
@@ -22,21 +25,33 @@ class Service extends BaseService
         return $this;
     }
 
+    /**
+     * @return Artist
+     */
     public function artist()
     {
         return $this->getApiClient()->artist;
     }
 
+    /**
+     * @return Album
+     */
     public function album()
     {
         return $this->getApiClient()->album;
     }
 
+    /**
+     * @return Song
+     */
     public function song()
     {
         return $this->getApiClient()->song;
     }
 
+    /**
+     * @return Song
+     */
     public function track()
     {
         return $this->song();
