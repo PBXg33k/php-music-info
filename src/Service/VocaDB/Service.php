@@ -6,6 +6,7 @@ use Pbxg33k\VocaDB\Client as VocaDBClient;
 use Pbxg33k\VocaDB\Album;
 use Pbxg33k\VocaDB\Artist;
 use Pbxg33k\VocaDB\Song;
+use Service\VocaDB\Endpoint;
 
 class Service extends BaseService
 {
@@ -21,6 +22,10 @@ class Service extends BaseService
         $this->setApiClient(new VocaDBClient(['guzzle' => $config]));
         $this->client = new VocaDBClient($config);
         $this->setInitialized();
+
+        // Override Client endpoints (optional)
+        $this->client->artist   = new Endpoint\Artist($this->getApiClient());
+        $this->client->album    = new Endpoint\Album($this->getApiClient());
 
         return $this;
     }
