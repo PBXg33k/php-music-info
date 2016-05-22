@@ -1,12 +1,14 @@
 <?php
 namespace Pbxg33k\MusicInfo\Service;
 
+use Exception\ServiceConfigurationException;
 use GuzzleHttp\ClientInterface;
 use Pbxg33k\MusicInfo\Models\IMusicService;
 use Pbxg33k\MusicInfo\Models\IMusicServiceEndpoint;
 
 class BaseService implements IMusicService
 {
+    const ERR_METHOD_NOT_IMPLEMENTED = "Method not implemented";
     /**
      * @var ClientInterface
      */
@@ -106,42 +108,51 @@ class BaseService implements IMusicService
      * It is set to be the method that is called by Symfony's Service Loader
      *
      * @param array $config
-     * @return mixed
+     * @return void
+     * @throws ServiceConfigurationException
      */
     public function init($config = [])
     {
-        // TODO: Implement init() method.
+        throw new ServiceConfigurationException(self::ERR_METHOD_NOT_IMPLEMENTED);
     }
 
     /**
+     *
+     * @throws ServiceConfigurationException
      * @return IMusicServiceEndpoint
      */
     public function artist()
     {
-        // TODO: Implement artist() method.
+        throw new ServiceConfigurationException(self::ERR_METHOD_NOT_IMPLEMENTED);
     }
 
     /**
+     *
+     * @throws ServiceConfigurationException
      * @return IMusicServiceEndpoint
      */
     public function album()
     {
-        // TODO: Implement album() method.
+        throw new ServiceConfigurationException(self::ERR_METHOD_NOT_IMPLEMENTED);
     }
 
     /**
+     *
+     * @throws ServiceConfigurationException
      * @return IMusicServiceEndpoint
      */
     public function song()
     {
-        // TODO: Implement song() method.
+        throw new ServiceConfigurationException(self::ERR_METHOD_NOT_IMPLEMENTED);
     }
 
     /**
+     *
+     * @throws ServiceConfigurationException
      * @return IMusicServiceEndpoint
      */
     public function track()
     {
-        // TODO: Implement track() method.
+        throw new ServiceConfigurationException(self::ERR_METHOD_NOT_IMPLEMENTED);
     }
 }

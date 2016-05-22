@@ -11,7 +11,13 @@
         "symfony/config": "^3.0"
     },
     "require-dev": {
-        "codeception/codeception": "^2.1"
+        "codeception/codeception": "^2.1",
+        "symfony/yaml": "^3.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pbxg33k\\MusicInfo\\": "src/"
+        }
     },
     "license": "MIT",
     "authors": [

@@ -1,6 +1,7 @@
 <?php
 namespace Pbxg33k\MusicInfo;
 
+use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -37,6 +38,9 @@ class MusicInfo
 
         if(isset($config['services'])) {
             foreach($config['services'] as $service) {
+                if(!isset($config['init'])) {
+                    $config['init'] = null;
+                }
                 $this->loadService($service, $config['init']);
                 $this->supportedServices[] = $service;
             }
@@ -85,7 +89,7 @@ class MusicInfo
      */
     public function loadService($service, $init = false)
     {
-        $fqcn = implode('\\',['PbxG33k', 'MusicInfoBundle', 'Service', $service, 'Service']);
+        $fqcn = implode('\\',['Pbxg33k', 'MusicInfo', 'Service', $service, 'Service']);
         if(class_exists($fqcn)) {
             /** @var IMusicService $client */
             $client = new $fqcn();
@@ -96,7 +100,7 @@ class MusicInfo
             }
             $this->addService($client, $service);
         } else {
-            throw new \Exception('Service class does not exist: '.$service);
+            throw new \Exception('Service class does not exist: '.$service.' ('.$fqcn.')');
         }
     }
 
@@ -104,6 +108,7 @@ class MusicInfo
      * Merge shared config with service specific configuration
      *
      * @param $service
+     * @return array
      */
     public function mergeConfig($service)
     {

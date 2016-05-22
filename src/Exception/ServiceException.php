@@ -6,10 +6,10 @@
  * Time: 17:30
  */
 
-namespace Exception;
+namespace Pbxg33k\MusicInfo\Exception;
 
 
-class ServiceException
+class ServiceException extends \Exception
 {
 
 }

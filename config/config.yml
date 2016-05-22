@@ -1,14 +1,14 @@
 music_info:
     init_services: true
     services:
-        # - VocaDB
+        - VocaDB
         # - Discogs
-        - MusicBrainz
+        # - MusicBrainz
         # - Spotify
     preferred_order:
-      - MusicBrainz
+        # - MusicBrainz
         # - Spotify
-        # - VocaDB
+        - VocaDB
     # Give a weight per service
     # This will be used to *guess* the correct
     # value if multiple services return different values
@@ -23,7 +23,7 @@ music_info:
             http:
                 user_agent: 'your-app-name/0.0.1 +https://www.myawsomesite.com'
     # Service Specific config
-    # vocadb:
+    vocadb:
     spotify:
         client_id: null
         client_secret: null
