@@ -19,6 +19,10 @@ class MusicInfo
      * @var array
      */
     protected $services;
+
+    /**
+     * @var array
+     */
     protected $config;
 
     /**
@@ -27,6 +31,11 @@ class MusicInfo
      */
     protected $supportedServices = [];
 
+    /**
+     * MusicInfo constructor.
+     * @param $config
+     * @throws ServiceConfigurationException if musicinfo.service is missing
+     */
     public function __construct($config)
     {
         $this->config = $config;
@@ -45,12 +54,15 @@ class MusicInfo
                 $this->supportedServices[] = $service;
             }
         } else {
-            throw new \Exception("musicinfo.services is required");
+            throw new ServiceConfigurationException("musicinfo.services is required");
         }
 
         return $this->getServices();
     }
 
+    /**
+     * @param $configDirectory
+     */
     public function loadConfig($configDirectory)
     {
         $locator = new FileLocator($configDirectory);
@@ -145,7 +157,7 @@ class MusicInfo
      */
     public function addService(IMusicService $service, $key)
     {
-        $this->services[$key] = $service;
+        $this->services[strtolower($key)] = $service;
         return $this;
     }
 
@@ -157,8 +169,13 @@ class MusicInfo
         return $this->services;
     }
 
+    /**
+     * @param $key
+     * @return IMusicService|null
+     */
     public function getService($key)
     {
+        $key = strtolower($key);
         if(isset($this->services[$key])) {
             return $this->services[$key];
         } else {

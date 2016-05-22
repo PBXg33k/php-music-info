@@ -1,10 +1,10 @@
 <?php
 namespace Pbxg33k\MusicInfo\Service;
 
-use Exception\ServiceConfigurationException;
 use GuzzleHttp\ClientInterface;
 use Pbxg33k\MusicInfo\Models\IMusicService;
 use Pbxg33k\MusicInfo\Models\IMusicServiceEndpoint;
+use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 
 class BaseService implements IMusicService
 {
