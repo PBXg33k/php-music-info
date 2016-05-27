@@ -9,7 +9,7 @@
 namespace Service\VocaDB\Endpoint;
 
 use Pbxg33k\VocaDB\Album as AlbumEndpoint;
-use Pbxg33k\MusicInfo\Models\IMusicServiceEndpoint;
+use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 
 class Album extends AlbumEndpoint implements IMusicServiceEndpoint
 {

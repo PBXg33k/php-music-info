@@ -1,5 +1,5 @@
 <?php
-namespace Pbxg33k\MusicInfo\Models;
+namespace Pbxg33k\MusicInfo\Model;
 
 use GuzzleHttp\ClientInterface;
 

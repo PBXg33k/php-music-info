@@ -9,7 +9,7 @@
 namespace Service\VocaDB\Endpoint;
 
 use Pbxg33k\VocaDB\Artist as ArtistEndpoint;
-use Pbxg33k\MusicInfo\Models\IMusicServiceEndpoint;
+use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 
 class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
 {

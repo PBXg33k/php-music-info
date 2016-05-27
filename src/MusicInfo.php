@@ -5,7 +5,7 @@ use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Pbxg33k\MusicInfo\Models\IMusicService;
+use Pbxg33k\MusicInfo\Model\IMusicService;
 use Symfony\Component\Config\FileLocator;
 
 class MusicInfo

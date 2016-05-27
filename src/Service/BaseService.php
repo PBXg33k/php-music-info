@@ -2,8 +2,8 @@
 namespace Pbxg33k\MusicInfo\Service;
 
 use GuzzleHttp\ClientInterface;
-use Pbxg33k\MusicInfo\Models\IMusicService;
-use Pbxg33k\MusicInfo\Models\IMusicServiceEndpoint;
+use Pbxg33k\MusicInfo\Model\IMusicService;
+use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 
 class BaseService implements IMusicService
