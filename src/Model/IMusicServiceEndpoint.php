@@ -5,12 +5,6 @@ namespace Pbxg33k\MusicInfo\Model;
 interface IMusicServiceEndpoint
 {
     /**
-     * IMusicServiceEndpoint constructor.
-     * @param $apiClient
-     */
-    public function __construct($apiClient);
-
-    /**
      * @return mixed
      */
     function getApiService();
