@@ -11,7 +11,8 @@
         "symfony/config": "^2.8|^3.0",
         "symfony/http-foundation": "^2.8|^3.1",
         "symfony/dependency-injection": "^2.8|^3.1",
-        "symfony/http-kernel": "^2.8|^3.1"
+        "symfony/http-kernel": "^2.8|^3.1",
+        "pbxg33k/pbxg33k-traits": "^1.0"
     },
     "require-dev": {
         "codeception/codeception": "^2.1",

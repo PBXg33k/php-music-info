@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "7a360058c8cbc4e8d1f9edf0db6fa886",
-    "content-hash": "7420927210bb0e9f7508bd970dac1884",
+    "hash": "b125b3b72dc8e803c41d0a23bdfee1bf",
+    "content-hash": "126927af09c07d3b23edf73d96696068",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -479,6 +479,44 @@
                 "php"
             ],
             "time": "2016-04-16 11:50:35"
+        },
+        {
+            "name": "pbxg33k/pbxg33k-traits",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PBXg33k/php-traits.git",
+                "reference": "86e59d16f7cc037f7b8c7cc8e3be944ef703ec8e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PBXg33k/php-traits/zipball/86e59d16f7cc037f7b8c7cc8e3be944ef703ec8e",
+                "reference": "86e59d16f7cc037f7b8c7cc8e3be944ef703ec8e",
+                "shasum": ""
+            },
+            "require-dev": {
+                "crada/php-apidoc": "^1.3",
+                "phpmd/phpmd": "^2.4",
+                "phpunit/phpunit": "^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pbxg33k\\Traits\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Oguzhan Uysal",
+                    "email": "development@oguzhanuysal.eu"
+                }
+            ],
+            "description": "A collection of traits to make life with PHP easier",
+            "time": "2016-05-27 18:55:51"
         },
         {
             "name": "pbxg33k/vocadb",
