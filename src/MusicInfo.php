@@ -139,12 +139,15 @@ class MusicInfo
     /**
      * Load all services
      *
-     * @return bool|ArrayCollection
+     * @param bool $initialize
+     *
+     * @return ArrayCollection
+     * @throws \Exception
      */
-    public function loadServices()
+    public function loadServices($initialize = false)
     {
         foreach($this->supportedServices as $service) {
-            $this->loadService($service);
+            $this->loadService($service, $initialize);
         }
 
         return $this->getServices();
