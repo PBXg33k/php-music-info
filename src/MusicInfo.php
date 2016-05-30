@@ -57,8 +57,6 @@ class MusicInfo
         } else {
             throw new ServiceConfigurationException("musicinfo.services is required");
         }
-
-        $this->getServices();
     }
 
     /**
@@ -127,10 +125,10 @@ class MusicInfo
     public function mergeConfig($service)
     {
         $service = strtolower($service);
-        if(isset($this->config[$service])) {
+        if(isset($this->config['service_configuration'][$service])) {
             $config = array_merge(
                 $this->config['defaults'],
-                $this->config[$service]
+                $this->config['service_configuration'][$service]
             );
             return $config;
         } else {
