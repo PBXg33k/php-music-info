@@ -115,6 +115,10 @@ class Service extends BaseService
     {
         return $this->authorized;
     }
-    
-    
+
+    public function artist()
+    {
+        return $this->artist;
+    }
+
 }

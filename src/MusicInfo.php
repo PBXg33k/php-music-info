@@ -62,15 +62,6 @@ class MusicInfo
     }
 
     /**
-     * @param $configDirectory
-     */
-    public function loadConfig($configDirectory)
-    {
-        $locator = new FileLocator($configDirectory);
-        $generalConfig = $locator->locate('config.yml');
-    }
-
-    /**
      * @param ClientInterface $client
      *
      * @return $this
@@ -261,7 +252,7 @@ class MusicInfo
                 throw new \Exception(sprintf('Method (%s) not found in %s', $methodName, get_class($service)));
             }
 
-            $results[$serviceKey] = $service->{$methodName}->getByName($argument);
+            $results[$serviceKey] = $service->{$methodName}()->getByName($argument);
         }
 
         return $results;
