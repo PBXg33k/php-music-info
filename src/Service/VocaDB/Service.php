@@ -21,7 +21,7 @@ class Service extends BaseService
 
         $this->setApiClient(new VocaDBClient(['guzzle' => $config]));
         $this->client = new VocaDBClient($config);
-        $this->setInitialized();
+        $this->setInitialized(true);
 
         // Override Client endpoints (optional)
         $this->client->artist   = new Endpoint\Artist($this->getApiClient());
