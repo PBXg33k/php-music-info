@@ -9,6 +9,7 @@
 namespace Pbxg33k\MusicInfo\Service\Spotify;
 
 use Pbxg33k\MusicInfo\Service\BaseService;
+use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Artist;
 use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 use Symfony\Component\HttpFoundation\Request;
@@ -28,6 +29,11 @@ class Service extends BaseService
     protected $spotifySession;
 
     /**
+     * Endpoints
+     */
+    protected $artist;
+
+    /**
      * {@inheritdoc}
      */
     public function init($config = [])
@@ -40,6 +46,8 @@ class Service extends BaseService
         $this->setApiClient(new SpotifyWebAPI());
 
         $this->requestCredentialsToken($config['scopes']);
+        
+        $this->artist = new Artist($this);
 
         return $this;
     }
@@ -82,4 +90,30 @@ class Service extends BaseService
     {
         return $this->getApiClient()->setAccessToken($this->spotifySession->getAccessToken());
     }
+
+    /**
+     * @return mixed
+     */
+    public function getArtist()
+    {
+        return $this->artist;
+    }
+
+    /**
+     * @return Session
+     */
+    public function getSpotifySession()
+    {
+        return $this->spotifySession;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isAuthorized()
+    {
+        return $this->authorized;
+    }
+    
+    
 }
