@@ -19,13 +19,12 @@ class Service extends BaseService
             $config = $this->getConfig();
         }
 
-        $this->setApiClient(new VocaDBClient(['guzzle' => $config]));
-        $this->client = new VocaDBClient($config);
+        $this->setApiClient(new VocaDBClient($config));
         $this->setInitialized(true);
 
         // Override Client endpoints (optional)
-        $this->client->artist   = new Endpoint\Artist($this->getApiClient());
-        $this->client->album    = new Endpoint\Album($this->getApiClient());
+        $this->apiClient->artist   = new Endpoint\Artist($this->getApiClient());
+        $this->apiClient->album    = new Endpoint\Album($this->getApiClient());
 
         return $this;
     }
