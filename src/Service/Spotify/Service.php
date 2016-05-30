@@ -28,7 +28,7 @@ class Service extends BaseService
     protected $spotifySession;
 
     /**
-     * @param array $config
+     * {@inheritdoc}
      */
     public function init($config = [])
     {
@@ -38,6 +38,10 @@ class Service extends BaseService
 
         $this->spotifySession = new Session($config['client_id'], $config['client_secret'], $config['redirect_uri']);
         $this->setApiClient(new SpotifyWebAPI());
+
+        $this->requestCredentialsToken($config['scopes']);
+
+        return $this;
     }
 
     /**
