@@ -1,0 +1,39 @@
+music_info:
+    init_services: true
+    services:
+        - VocaDB
+        # - Discogs
+        # - MusicBrainz
+        # - Spotify
+    preferred_order:
+        # - MusicBrainz
+        # - Spotify
+        - VocaDB
+    # Give a weight per service
+    # This will be used to *guess* the correct
+    # value if multiple services return different values
+    service_weight:
+        - { VocaDB: 10 }
+    guzzle:
+        proxy: null
+    # General config shared across services
+    # Mainly Guzzle
+    defaults:
+        guzzle:
+            http:
+                user_agent: 'your-app-name/0.0.1 +https://www.myawsomesite.com'
+    # Service Specific config
+    vocadb:
+    spotify:
+        client_id: null
+        client_secret: null
+        redirect_uri: null
+        scopes:
+          - playlist-read-private
+          - user-read-private
+    discogs:
+        throttle: true
+    musicbrainz:
+        application_name: Meuk
+        application_version: 0.0.1
+        application_url: http://www.hoehel.be
