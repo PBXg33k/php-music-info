@@ -7,7 +7,12 @@ interface IMusicServiceEndpoint
     /**
      * @return mixed
      */
-    function getApiService();
+    function setParent($apiService);
+
+    /**
+     * @return mixed
+     */
+    function getParent();
 
     /**
      * @param $arguments

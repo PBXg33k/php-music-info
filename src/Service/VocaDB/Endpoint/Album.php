@@ -16,7 +16,7 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
     /**
      * @return mixed
      */
-    function getApiService()
+    function getParent()
     {
         // TODO: Implement getApiService() method.
     }
@@ -30,5 +30,13 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
     public function getByGuid($guid)
     {
         return $this->getById($guid);
+    }
+
+    /**
+     * @return mixed
+     */
+    function setParent($apiService)
+    {
+        // TODO: Implement setApiService() method.
     }
 }
