@@ -46,6 +46,7 @@ class Service extends BaseService
         $this->setApiClient(new SpotifyWebAPI());
 
         $this->requestCredentialsToken($config['scopes']);
+        $this->setInitialized(true);
         
         $this->artist = new Artist($this);
 
