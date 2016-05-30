@@ -39,4 +39,19 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
     {
         // TODO: Implement setApiService() method.
     }
+
+    public function transformSingle($raw)
+    {
+        // TODO: Implement transformSingle() method.
+    }
+
+    public function transformCollection($raw)
+    {
+        // TODO: Implement transformCollection() method.
+    }
+
+    public function transform($raw)
+    {
+        // TODO: Implement transform() method.
+    }
 }

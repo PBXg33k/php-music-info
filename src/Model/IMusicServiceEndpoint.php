@@ -5,9 +5,17 @@ namespace Pbxg33k\MusicInfo\Model;
 interface IMusicServiceEndpoint
 {
     /**
+     * @param $apiService
+     *
      * @return mixed
      */
     public function setParent($apiService);
+
+    public function transformSingle($raw);
+
+    public function transformCollection($raw);
+
+    public function transform($raw);
 
     /**
      * @return mixed
