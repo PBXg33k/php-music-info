@@ -1,12 +1,12 @@
 <?php
 namespace Pbxg33k\MusicInfo\Service\VocaDB;
 
+use Pbxg33k\MusicInfo\Service\VocaDB\Endpoint;
 use Pbxg33k\MusicInfo\Service\BaseService;
 use Pbxg33k\VocaDB\Client as VocaDBClient;
 use Pbxg33k\VocaDB\Album;
 use Pbxg33k\VocaDB\Artist;
 use Pbxg33k\VocaDB\Song;
-use Service\VocaDB\Endpoint;
 
 class Service extends BaseService
 {
@@ -16,7 +16,7 @@ class Service extends BaseService
     public function init($config = null)
     {
         if(!$config) {
-            $config = $this->getConfig()['guzzle'];
+            $config = $this->getConfig();
         }
 
         $this->setApiClient(new VocaDBClient(['guzzle' => $config]));

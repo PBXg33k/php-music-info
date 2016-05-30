@@ -33,7 +33,7 @@ class Service extends BaseService
     public function init($config = [])
     {
         if(!$config) {
-            $config = $this->getConfig()['spotify'];
+            $config = $this->getConfig();
         }
 
         $this->spotifySession = new Session($config['client_id'], $config['client_secret'], $config['redirect_uri']);

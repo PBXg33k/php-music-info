@@ -6,7 +6,7 @@
  * Time: 22:21
  */
 
-namespace Service\VocaDB\Endpoint;
+namespace Pbxg33k\MusicInfo\Service\VocaDB\Endpoint;
 
 use Pbxg33k\VocaDB\Album as AlbumEndpoint;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;

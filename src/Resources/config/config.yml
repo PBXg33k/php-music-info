@@ -1,5 +1,5 @@
 music_info:
-    init_services: true
+    init_services: false
     services:
         - VocaDB
         - Spotify
@@ -24,9 +24,14 @@ music_info:
                 user_agent: 'your-app-name/0.0.1 +https://www.myawsomesite.com'
     # Service Specific config
     vocadb:
+        language: Default # default, japanese, romaji, english
+        start: 0
+        max_entries: 10
+        get_total_count: false
+        name_match_mode: partials # auto, partial, exact, starts_with, words
     spotify:
-        client_id: null
-        client_secret: null
+        client_id: 7c97efb230be4b6fbacd725695aa2cf6
+        client_secret: 61ec7f83a350446abb3c0ad9c5adf371
         redirect_uri: null
         scopes:
           - playlist-read-private

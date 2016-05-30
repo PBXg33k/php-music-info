@@ -6,6 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Pbxg33k\MusicInfo\Model\IMusicService;
+use Pbxg33k\MusicInfo\Service\BaseService;
 use Symfony\Component\Config\FileLocator;
 
 class MusicInfo
@@ -47,10 +48,10 @@ class MusicInfo
 
         if(isset($config['services'])) {
             foreach($config['services'] as $service) {
-                if(!isset($config['init'])) {
-                    $config['init'] = null;
+                if(!isset($config['init_services'])) {
+                    $config['init_services'] = null;
                 }
-                $this->loadService($service, $config['init']);
+                $this->loadService($service, $config['init_services']);
                 $this->supportedServices[] = $service;
             }
         } else {
@@ -95,7 +96,7 @@ class MusicInfo
      * @param $service
      * @param $init
      *
-     * @return bool
+     * @return IMusicService
      *
      * @throws \Exception
      */
@@ -111,6 +112,7 @@ class MusicInfo
                 $client->init();
             }
             $this->addService($client, $service);
+            return $service;
         } else {
             throw new \Exception('Service class does not exist: '.$service.' ('.$fqcn.')');
         }
@@ -127,8 +129,8 @@ class MusicInfo
         $service = strtolower($service);
         if(isset($this->config[$service])) {
             $config = array_merge(
-                $this->config[$service],
-                $this->config['defaults']
+                $this->config['defaults'],
+                $this->config[$service]
             );
             return $config;
         } else {
@@ -177,10 +179,25 @@ class MusicInfo
     {
         $key = strtolower($key);
         if(isset($this->services[$key])) {
-            return $this->services[$key];
+            return $this->initializeService($this->services[$key]);
         } else {
             return null;
         }
+    }
+
+    /**
+     * @param BaseService $service
+     *
+     * @return BaseService
+     * @throws ServiceConfigurationException
+     */
+    public function initializeService(BaseService $service)
+    {
+        if(!$service->isInitialized()) {
+            $service->init();
+        }
+        
+        return $service;
     }
 
     /**
