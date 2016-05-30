@@ -7,10 +7,12 @@ use GuzzleHttp\ClientInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Pbxg33k\MusicInfo\Model\IMusicService;
 use Pbxg33k\MusicInfo\Service\BaseService;
+use Pbxg33k\Traits\PropertyTrait;
 use Symfony\Component\Config\FileLocator;
 
 class MusicInfo
 {
+    use PropertyTrait;
     /**
      * @var ClientInterface
      */
@@ -221,5 +223,47 @@ class MusicInfo
     public function getPreferredService()
     {
         return $this->getService($this->config['preferred_order'][0]);
+    }
+
+    /**
+     * Perform Multiservice search
+     *
+     * @param      $argument
+     * @param      $type
+     * @param null $servicesArg
+     *
+     * @return array
+     * @throws \Exception
+     */
+    public function doSearch($argument, $type, $servicesArg = null)
+    {
+        $services = [];
+        if(null === $servicesArg) {
+            $services = $this->getServices();
+        } elseif(is_array($servicesArg)) {
+            foreach($servicesArg as $service) {
+                if(is_string($service) && $loadedService = $this->getService($service)) {
+                    $services[$service] = $loadedService;
+                } else {
+                    throw new \Exception(sprintf('Service (%s) cannot be found', $service));
+                }
+            }
+        } elseif(is_string($servicesArg) && $loadedService = $this->getService($servicesArg)) {
+            $services[$servicesArg] = $loadedService;
+        }
+
+        $results = [];
+
+        foreach($services as $serviceKey => $service) {
+            $methodName = $this->getMethodName($type);
+
+            if(!method_exists($service, $methodName)) {
+                throw new \Exception(sprintf('Method (%s) not found in %s', $methodName, get_class($service)));
+            }
+
+            $results[$serviceKey] = $service->{$methodName}->getByName($argument);
+        }
+
+        return $results;
     }
 }
