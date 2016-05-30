@@ -2,12 +2,12 @@ music_info:
     init_services: true
     services:
         - VocaDB
+        - Spotify
         # - Discogs
         # - MusicBrainz
-        # - Spotify
     preferred_order:
         # - MusicBrainz
-        # - Spotify
+        - Spotify
         - VocaDB
     # Give a weight per service
     # This will be used to *guess* the correct
