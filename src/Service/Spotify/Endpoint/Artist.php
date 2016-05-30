@@ -8,6 +8,7 @@
 
 namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
+use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
 
@@ -26,7 +27,7 @@ class Artist implements IMusicServiceEndpoint
     /**
      * @return mixed
      */
-    function setParent($parent)
+    public function setParent($parent)
     {
         $this->parent = $parent;
     }
@@ -34,7 +35,7 @@ class Artist implements IMusicServiceEndpoint
     /**
      * @return SpotifyService
      */
-    function getParent()
+    public function getParent()
     {
         return $this->parent;
     }
@@ -46,6 +47,7 @@ class Artist implements IMusicServiceEndpoint
      */
     public function get($arguments)
     {
+        throw new MethodNotImplementedException;
         // TODO: Implement get() method.
     }
 
@@ -56,6 +58,7 @@ class Artist implements IMusicServiceEndpoint
      */
     public function getComplete($arguments)
     {
+        throw new MethodNotImplementedException;
         // TODO: Implement getComplete() method.
     }
 

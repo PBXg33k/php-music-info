@@ -16,7 +16,7 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
     /**
      * @return mixed
      */
-    function getParent()
+    public function getParent()
     {
         // TODO: Implement getApiService() method.
     }
@@ -35,7 +35,7 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
     /**
      * @return mixed
      */
-    function setParent($apiService)
+    public function setParent($apiService)
     {
         // TODO: Implement setApiService() method.
     }

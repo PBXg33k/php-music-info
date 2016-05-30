@@ -17,7 +17,7 @@ class MusicInfo
     protected $client;
 
     /**
-     * @var array
+     * @var ArrayCollection
      */
     protected $services;
 
@@ -58,7 +58,7 @@ class MusicInfo
             throw new ServiceConfigurationException("musicinfo.services is required");
         }
 
-        return $this->getServices();
+        $this->getServices();
     }
 
     /**
