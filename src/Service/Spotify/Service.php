@@ -38,7 +38,7 @@ class Service extends BaseService
      */
     public function init($config = [])
     {
-        if (!$config) {
+        if (empty($config)) {
             $config = $this->getConfig();
         }
 

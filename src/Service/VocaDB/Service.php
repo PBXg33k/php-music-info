@@ -15,7 +15,7 @@ class Service extends BaseService
      */
     public function init($config = null)
     {
-        if (!$config) {
+        if (empty($config)) {
             $config = $this->getConfig();
         }
 
