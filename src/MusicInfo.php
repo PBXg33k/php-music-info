@@ -254,19 +254,23 @@ class MusicInfo
     {
         $services = new ArrayCollection();
 
-        if (null === $servicesArg) {
-            $services = $this->getServices();
-        } elseif (is_array($servicesArg)) {
-            foreach ($servicesArg as $service) {
-                if (is_string($service) && $loadedService = $this->getService($service)) {
-                    $services->set($service, $loadedService);
-                } else {
-                    throw new \Exception(sprintf('Service (%s) cannot be found', $service));
+        switch(gettype($servicesArg)) {
+            case "NULL":
+                $services = $this->getServices();
+                break;
+            case "array":
+                foreach($servicesArg as $service) {
+                    if (is_string($service) && $loadedService = $this->getService($service)) {
+                        $services->set($service, $loadedService);
+                    } else {
+                        throw new \Exception(sprintf('Service (%s) cannot be found', $service));
+                    }
                 }
-            }
-        } elseif (is_string($servicesArg) && $loadedService = $this->getService($servicesArg)) {
-            $services->set($servicesArg, $loadedService);
-
+                break;
+            case "string":
+                if($loadedService = $this->getService($servicesArg)) {
+                    $services->set($servicesArg, $loadedService);
+                }
         }
 
         return $services;
