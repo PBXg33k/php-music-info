@@ -93,7 +93,7 @@ class Service extends BaseService
     }
 
     /**
-     * @return mixed
+     * @return Artist
      */
     public function getArtist()
     {

@@ -8,7 +8,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Pbxg33k\MusicInfo\Model\IMusicService;
 use Pbxg33k\MusicInfo\Service\BaseService;
 use Pbxg33k\Traits\PropertyTrait;
-use Symfony\Component\Config\FileLocator;
 
 class MusicInfo
 {
@@ -48,9 +47,9 @@ class MusicInfo
             new Client($config['defaults']['guzzle'])
         );
 
-        if(isset($config['services'])) {
-            foreach($config['services'] as $service) {
-                if(!isset($config['init_services'])) {
+        if (isset($config['services'])) {
+            foreach ($config['services'] as $service) {
+                if (!isset($config['init_services'])) {
                     $config['init_services'] = null;
                 }
                 $this->loadService($service, $config['init_services']);
@@ -93,19 +92,19 @@ class MusicInfo
      */
     public function loadService($service, $init = false)
     {
-        $fqcn = implode('\\',['Pbxg33k', 'MusicInfo', 'Service', $service, 'Service']);
-        if(class_exists($fqcn)) {
+        $fqcn = implode('\\', ['Pbxg33k', 'MusicInfo', 'Service', $service, 'Service']);
+        if (class_exists($fqcn)) {
             /** @var IMusicService $client */
             $client = new $fqcn();
             $client->setConfig($this->mergeConfig($service));
             $client->setClient($this->getClient());
-            if($init == true) {
+            if ($init == true) {
                 $client->init();
             }
             $this->addService($client, $service);
             return $service;
         } else {
-            throw new \Exception('Service class does not exist: '.$service.' ('.$fqcn.')');
+            throw new \Exception('Service class does not exist: ' . $service . ' (' . $fqcn . ')');
         }
     }
 
@@ -118,7 +117,7 @@ class MusicInfo
     public function mergeConfig($service)
     {
         $service = strtolower($service);
-        if(isset($this->config['service_configuration'][$service])) {
+        if (isset($this->config['service_configuration'][$service])) {
             $config = array_merge(
                 $this->config['defaults'],
                 $this->config['service_configuration'][$service]
@@ -139,7 +138,7 @@ class MusicInfo
      */
     public function loadServices($initialize = false)
     {
-        foreach($this->supportedServices as $service) {
+        foreach ($this->supportedServices as $service) {
             $this->loadService($service, $initialize);
         }
 
@@ -167,12 +166,12 @@ class MusicInfo
 
     /**
      * @param $key
-     * @return IMusicService|null
+     * @return BaseService|null
      */
     public function getService($key)
     {
         $key = strtolower($key);
-        if(isset($this->services[$key])) {
+        if (isset($this->services[$key])) {
             return $this->initializeService($this->services[$key]);
         } else {
             return null;
@@ -187,7 +186,7 @@ class MusicInfo
      */
     public function initializeService(BaseService $service)
     {
-        if(!$service->isInitialized()) {
+        if (!$service->isInitialized()) {
             $service->init();
         }
         
@@ -201,7 +200,7 @@ class MusicInfo
      */
     public function removeService($key)
     {
-        if(isset($this->services[$key])) {
+        if (isset($this->services[$key])) {
             unset($this->services[$key]);
         }
 
@@ -209,7 +208,7 @@ class MusicInfo
     }
 
     /**
-     * @return IMusicService
+     * @return BaseService|null
      */
     public function getPreferredService()
     {
@@ -229,26 +228,26 @@ class MusicInfo
     public function doSearch($argument, $type, $servicesArg = null)
     {
         $services = [];
-        if(null === $servicesArg) {
+        if (null === $servicesArg) {
             $services = $this->getServices();
-        } elseif(is_array($servicesArg)) {
-            foreach($servicesArg as $service) {
-                if(is_string($service) && $loadedService = $this->getService($service)) {
+        } elseif (is_array($servicesArg)) {
+            foreach ($servicesArg as $service) {
+                if (is_string($service) && $loadedService = $this->getService($service)) {
                     $services[$service] = $loadedService;
                 } else {
                     throw new \Exception(sprintf('Service (%s) cannot be found', $service));
                 }
             }
-        } elseif(is_string($servicesArg) && $loadedService = $this->getService($servicesArg)) {
+        } elseif (is_string($servicesArg) && $loadedService = $this->getService($servicesArg)) {
             $services[$servicesArg] = $loadedService;
         }
 
         $results = [];
 
-        foreach($services as $serviceKey => $service) {
+        foreach ($services as $serviceKey => $service) {
             $methodName = $this->getMethodName($type);
 
-            if(!method_exists($service, $methodName)) {
+            if (!method_exists($service, $methodName)) {
                 throw new \Exception(sprintf('Method (%s) not found in %s', $methodName, get_class($service)));
             }
 
