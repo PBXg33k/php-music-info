@@ -31,9 +31,10 @@ interface IMusicService
 
     /**
      * @param $config
+     *
      * @return mixed
      */
-    public function setConfig($config= null);
+    public function setConfig($config = null);
 
     /**
      * @return mixed
@@ -44,6 +45,7 @@ interface IMusicService
      * Set the API Library client
      *
      * @param $apiClient
+     *
      * @return mixed
      */
     public function setApiClient($apiClient);
@@ -61,6 +63,7 @@ interface IMusicService
      * It is set to be the method that is called by Symfony's Service Loader
      *
      * @param array $config
+     *
      * @return mixed
      */
     public function init($config = []);
