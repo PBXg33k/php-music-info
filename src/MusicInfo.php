@@ -100,7 +100,7 @@ class MusicInfo
             $client = new $fqcn();
             $client->setConfig($this->mergeConfig($service));
             $client->setClient($this->getClient());
-            if ($init == true) {
+            if ($init === true) {
                 $client->init();
             }
             $this->addService($client, $service);
