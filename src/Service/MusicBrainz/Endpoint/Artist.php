@@ -16,6 +16,7 @@ use Pbxg33k\MusicInfo\Service\MusicBrainz\Service;
 
 class Artist implements IMusicServiceEndpoint
 {
+    const DATA_SOURCE = 'musicbrainz';
     /**
      * @var Service
      */
@@ -65,7 +66,7 @@ class Artist implements IMusicServiceEndpoint
         $collection = new ArrayCollection();
         if(is_array($raw)) {
             foreach ($raw as $artist) {
-                $collection->add($this->transform($artist));
+                $collection->add($this->transformSingle($artist));
             }
         }
 
