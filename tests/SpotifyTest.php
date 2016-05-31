@@ -43,6 +43,19 @@ class SpotifyTest extends PHPUnit_Framework_TestCase
     public function testSpotifyArtistClasses()
     {
         $this->assertInstanceOf('Pbxg33k\MusicInfo\Service\Spotify\Service', $this->spotifyService->artist()->getParent());
-        
+    }
+
+    public function testArtistSearchWithServiceAsArray()
+    {
+        $result = $this->musicInfo->doSearch('livetune', 'artist', ['spotify']);
+
+        $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
+    }
+
+    public function testArtistSearchWithServiceAsString()
+    {
+        $result = $this->musicInfo->doSearch('livetune', 'artist', 'spotify');
+
+        $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
     }
 }

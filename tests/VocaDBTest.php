@@ -32,4 +32,18 @@ class VocaDBTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf('Pbxg33k\MusicInfo\Service\VocaDB\Service', $this->vocaDBService);
     }
+
+    public function testArtistSearchWithServiceAsArray()
+    {
+        $result = $this->musicInfo->doSearch('livetune', 'artist', ['vocadb']);
+
+        $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
+    }
+
+    public function testArtistSearchWithServiceAsString()
+    {
+        $result = $this->musicInfo->doSearch('livetune', 'artist', 'vocadb');
+
+        $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
+    }
 }

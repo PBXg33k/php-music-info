@@ -8,6 +8,7 @@
  */
 class ConfigTest extends PHPUnit_Framework_TestCase
 {
+    const YAML_NAMESPACE = 'music_info';
     /**
      * @var \Pbxg33k\MusicInfo\MusicInfo
      */
@@ -18,20 +19,20 @@ class ConfigTest extends PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->config = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__ . '/../src/Resources/config/config.yml'));
-        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config['music_info']);
+        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config[self::YAML_NAMESPACE]);
     }
 
     public function testConfigWithoutInitService()
     {
-        unset($this->config['music_info']['init_services']);
-        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config['music_info']);
+        unset($this->config[self::YAML_NAMESPACE]['init_services']);
+        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config[self::YAML_NAMESPACE]);
     }
 
     public function testServiceConfigurationExceptionOnConstruct()
     {
         $this->expectException(\Pbxg33k\MusicInfo\Exception\ServiceConfigurationException::class);
-        unset($this->config['music_info']['services']);
-        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config['music_info']);
+        unset($this->config[self::YAML_NAMESPACE]['services']);
+        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config[self::YAML_NAMESPACE]);
     }
     
     public function testLoadService()
@@ -60,5 +61,19 @@ class ConfigTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf('Pbxg33k\MusicInfo\Service\VocaDB\Service', $this->musicInfo->getService('vocadb'));
         $this->musicInfo->removeService('vocadb');
         $this->assertNull($this->musicInfo->getService('vocadb'));
+    }
+    
+    public function testDefaults()
+    {
+        unset($this->config[self::YAML_NAMESPACE]['service_configuration']['vocadb']);
+        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config[self::YAML_NAMESPACE]);
+    }
+
+    public function testPreferredServiceConfig()
+    {
+        $this->assertEquals(
+            $this->musicInfo->getService(strtolower($this->config[self::YAML_NAMESPACE]['preferred_order'][0])),
+            $this->musicInfo->getPreferredService()
+        );
     }
 }
