@@ -77,7 +77,7 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
     public function transformCollection($raw)
     {
         $collection = new ArrayCollection();
-        foreach($raw->collection as $artist)
+        foreach ($raw->collection as $artist)
         {
             $collection->add($this->transformSingle($artist));
         }

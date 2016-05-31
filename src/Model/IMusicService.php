@@ -33,7 +33,7 @@ interface IMusicService
      * @param $config
      * @return mixed
      */
-    public function setConfig($config= null);
+    public function setConfig($config = null);
 
     /**
      * @return mixed

@@ -127,8 +127,8 @@ class Artist implements IMusicServiceEndpoint
     public function transformCollection($raw)
     {
         $collection = new ArrayCollection();
-        if(is_object($raw) && isset($raw->artists)) {
-            foreach($raw->artists->items as $artist) {
+        if (is_object($raw) && isset($raw->artists)) {
+            foreach ($raw->artists->items as $artist) {
                 $collection->add($this->transformSingle($artist));
             }
 
