@@ -1,10 +1,10 @@
 <?php
 namespace Pbxg33k\MusicInfo;
 
-use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
+use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use Doctrine\Common\Collections\ArrayCollection;
+use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 use Pbxg33k\MusicInfo\Model\IMusicService;
 use Pbxg33k\MusicInfo\Service\BaseService;
 use Pbxg33k\Traits\PropertyTrait;
@@ -35,7 +35,9 @@ class MusicInfo
 
     /**
      * MusicInfo constructor.
+     *
      * @param $config
+     *
      * @throws ServiceConfigurationException if musicinfo.service is missing
      */
     public function __construct($config)
@@ -102,6 +104,7 @@ class MusicInfo
                 $client->init();
             }
             $this->addService($client, $service);
+
             return $service;
         } else {
             throw new \Exception('Service class does not exist: ' . $service . ' (' . $fqcn . ')');
@@ -112,6 +115,7 @@ class MusicInfo
      * Merge shared config with service specific configuration
      *
      * @param $service
+     *
      * @return array
      */
     public function mergeConfig($service)
@@ -122,6 +126,7 @@ class MusicInfo
                 $this->config['defaults'],
                 $this->config['service_configuration'][$service]
             );
+
             return $config;
         } else {
             return $this->config['defaults'];
@@ -147,12 +152,14 @@ class MusicInfo
 
     /**
      * @param IMusicService $service
+     * @param               $key
      *
      * @return $this
      */
     public function addService(IMusicService $service, $key)
     {
         $this->services[strtolower($key)] = $service;
+
         return $this;
     }
 
@@ -166,6 +173,7 @@ class MusicInfo
 
     /**
      * @param $key
+     *
      * @return BaseService|null
      */
     public function getService($key)
@@ -189,7 +197,7 @@ class MusicInfo
         if (!$service->isInitialized()) {
             $service->init();
         }
-        
+
         return $service;
     }
 

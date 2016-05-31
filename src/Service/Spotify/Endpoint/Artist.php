@@ -10,9 +10,9 @@ namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
+use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
-use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
 
 class Artist implements IMusicServiceEndpoint
 {
@@ -38,7 +38,7 @@ class Artist implements IMusicServiceEndpoint
 
         return $this;
     }
-    
+
     /**
      * @return SpotifyService
      */

@@ -8,8 +8,8 @@
 
 namespace Pbxg33k\MusicInfo\Service\VocaDB\Endpoint;
 
-use Pbxg33k\VocaDB\Album as AlbumEndpoint;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
+use Pbxg33k\VocaDB\Album as AlbumEndpoint;
 
 class Album extends AlbumEndpoint implements IMusicServiceEndpoint
 {
@@ -23,8 +23,9 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
 
     /**
      * Aliases getById
-     * 
+     *
      * @param $guid
+     *
      * @return mixed
      */
     public function getByGuid($guid)

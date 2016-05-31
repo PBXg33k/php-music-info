@@ -38,7 +38,7 @@ class Service extends BaseService
      */
     public function init($config = [])
     {
-        if(!$config) {
+        if (!$config) {
             $config = $this->getConfig();
         }
 
@@ -47,7 +47,7 @@ class Service extends BaseService
 
         $this->requestCredentialsToken($config['scopes']);
         $this->setInitialized(true);
-        
+
         $this->artist = new Artist($this);
 
         return $this;
@@ -61,6 +61,7 @@ class Service extends BaseService
     public function requestCredentialsToken($scopes)
     {
         $this->spotifySession->requestCredentialsToken($scopes);
+
         return $this->setAccessTokenFromSession();
     }
 
@@ -73,6 +74,7 @@ class Service extends BaseService
     {
         $this->spotifySession->requestAccessToken($request->query->get('code'));
         $this->setAccessTokenFromSession();
+
         return $this->getApiClient()->getAccessToken();
     }
 

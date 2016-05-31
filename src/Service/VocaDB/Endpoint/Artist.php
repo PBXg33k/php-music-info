@@ -9,9 +9,9 @@
 namespace Pbxg33k\MusicInfo\Service\VocaDB\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Pbxg33k\VocaDB\Artist as ArtistEndpoint;
-use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
+use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
+use Pbxg33k\VocaDB\Artist as ArtistEndpoint;
 
 class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
 {
@@ -19,6 +19,7 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
      *
      */
     const DATA_SOURCE = 'vocadb';
+
     /**
      * @return mixed
      */
@@ -31,6 +32,7 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
      * Aliases getById
      *
      * @param $guid
+     *
      * @return mixed
      */
     public function getByGuid($guid)
@@ -77,8 +79,7 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
     public function transformCollection($raw)
     {
         $collection = new ArrayCollection();
-        foreach ($raw->collection as $artist)
-        {
+        foreach ($raw->collection as $artist) {
             $collection->add($this->transformSingle($artist));
         }
 

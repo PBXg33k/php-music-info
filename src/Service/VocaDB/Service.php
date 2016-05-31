@@ -1,11 +1,11 @@
 <?php
 namespace Pbxg33k\MusicInfo\Service\VocaDB;
 
-use Pbxg33k\MusicInfo\Service\VocaDB\Endpoint;
 use Pbxg33k\MusicInfo\Service\BaseService;
-use Pbxg33k\VocaDB\Client as VocaDBClient;
+use Pbxg33k\MusicInfo\Service\VocaDB\Endpoint;
 use Pbxg33k\VocaDB\Album;
 use Pbxg33k\VocaDB\Artist;
+use Pbxg33k\VocaDB\Client as VocaDBClient;
 use Pbxg33k\VocaDB\Song;
 
 class Service extends BaseService
@@ -15,7 +15,7 @@ class Service extends BaseService
      */
     public function init($config = null)
     {
-        if(!$config) {
+        if (!$config) {
             $config = $this->getConfig();
         }
 
@@ -23,8 +23,8 @@ class Service extends BaseService
         $this->setInitialized(true);
 
         // Override Client endpoints (optional)
-        $this->apiClient->artist   = new Endpoint\Artist($this->getApiClient());
-        $this->apiClient->album    = new Endpoint\Album($this->getApiClient());
+        $this->apiClient->artist = new Endpoint\Artist($this->getApiClient());
+        $this->apiClient->album = new Endpoint\Album($this->getApiClient());
 
         return $this;
     }

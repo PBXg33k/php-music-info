@@ -2,9 +2,9 @@
 namespace Pbxg33k\MusicInfo\Service;
 
 use GuzzleHttp\ClientInterface;
+use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 use Pbxg33k\MusicInfo\Model\IMusicService;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
-use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 
 class BaseService implements IMusicService
 {
@@ -108,6 +108,7 @@ class BaseService implements IMusicService
      * It is set to be the method that is called by Symfony's Service Loader
      *
      * @param array $config
+     *
      * @return void
      * @throws ServiceConfigurationException
      */

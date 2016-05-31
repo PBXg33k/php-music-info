@@ -6,9 +6,9 @@ music_info:
         # - Discogs
         # - MusicBrainz
     preferred_order:
-        # - MusicBrainz
         - Spotify
         - VocaDB
+        # - MusicBrainz
     # Give a weight per service
     # This will be used to *guess* the correct
     # value if multiple services return different values
