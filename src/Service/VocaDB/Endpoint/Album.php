@@ -6,29 +6,53 @@
  * Time: 22:21
  */
 
-namespace Service\VocaDB\Endpoint;
+namespace Pbxg33k\MusicInfo\Service\VocaDB\Endpoint;
 
-use Pbxg33k\VocaDB\Album as AlbumEndpoint;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
+use Pbxg33k\VocaDB\Album as AlbumEndpoint;
 
 class Album extends AlbumEndpoint implements IMusicServiceEndpoint
 {
     /**
      * @return mixed
      */
-    function getApiService()
+    public function getParent()
     {
         // TODO: Implement getApiService() method.
     }
 
     /**
      * Aliases getById
-     * 
+     *
      * @param $guid
+     *
      * @return mixed
      */
     public function getByGuid($guid)
     {
         return $this->getById($guid);
+    }
+
+    /**
+     * @return mixed
+     */
+    public function setParent($apiService)
+    {
+        // TODO: Implement setApiService() method.
+    }
+
+    public function transformSingle($raw)
+    {
+        // TODO: Implement transformSingle() method.
+    }
+
+    public function transformCollection($raw)
+    {
+        // TODO: Implement transformCollection() method.
+    }
+
+    public function transform($raw)
+    {
+        // TODO: Implement transform() method.
     }
 }
