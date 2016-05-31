@@ -216,33 +216,19 @@ class MusicInfo
     }
 
     /**
-     * Perform Multiservice search
+     * Perform Multi-service search
      *
      * @param      $argument
      * @param      $type
      * @param null $servicesArg
      *
-     * @return array
+     * @return ArrayCollection
      * @throws \Exception
      */
     public function doSearch($argument, $type, $servicesArg = null)
     {
-        $services = [];
-        if (null === $servicesArg) {
-            $services = $this->getServices();
-        } elseif (is_array($servicesArg)) {
-            foreach ($servicesArg as $service) {
-                if (is_string($service) && $loadedService = $this->getService($service)) {
-                    $services[$service] = $loadedService;
-                } else {
-                    throw new \Exception(sprintf('Service (%s) cannot be found', $service));
-                }
-            }
-        } elseif (is_string($servicesArg) && $loadedService = $this->getService($servicesArg)) {
-            $services[$servicesArg] = $loadedService;
-        }
-
-        $results = [];
+        $services = $this->_prepareSearch($servicesArg);
+        $results = new ArrayCollection();
 
         foreach ($services as $serviceKey => $service) {
             $methodName = $this->getMethodName($type);
@@ -250,10 +236,39 @@ class MusicInfo
             if (!method_exists($service, $methodName)) {
                 throw new \Exception(sprintf('Method (%s) not found in %s', $methodName, get_class($service)));
             }
-
-            $results[$serviceKey] = $service->{$methodName}()->getByName($argument);
+            $results->set($serviceKey, $service->{$methodName}()->getByName($argument));
         }
 
         return $results;
+    }
+
+    /**
+     * Return an arraycollection with (loaded) services
+     *
+     * @param mixed $servicesArg
+     *
+     * @return ArrayCollection
+     * @throws \Exception
+     */
+    protected function _prepareSearch($servicesArg = null)
+    {
+        $services = new ArrayCollection();
+
+        if (null === $servicesArg) {
+            $services = $this->getServices();
+        } elseif (is_array($servicesArg)) {
+            foreach ($servicesArg as $service) {
+                if (is_string($service) && $loadedService = $this->getService($service)) {
+                    $services->set($service, $loadedService);
+                } else {
+                    throw new \Exception(sprintf('Service (%s) cannot be found', $service));
+                }
+            }
+        } elseif (is_string($servicesArg) && $loadedService = $this->getService($servicesArg)) {
+            $services->set($servicesArg, $loadedService);
+
+        }
+
+        return $services;
     }
 }
