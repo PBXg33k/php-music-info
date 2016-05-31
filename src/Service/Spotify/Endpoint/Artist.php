@@ -28,11 +28,15 @@ class Artist implements IMusicServiceEndpoint
     }
 
     /**
-     * @return mixed
+     * @param $parent
+     *
+     * @return $this
      */
     public function setParent($parent)
     {
-        $this->parent = $parent;
+        $this->setParent($parent);
+
+        return $this;
     }
     
     /**
