@@ -33,4 +33,12 @@ class Test extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
     }
+
+    /**
+     * @expectedException \Exception
+     */
+    public function testExceptionOnNonExistingService()
+    {
+        $this->musicInfo->doSearch('Exception Time', 'The Exception', ['idontexist']);
+    }
 }

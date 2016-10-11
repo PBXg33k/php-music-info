@@ -46,4 +46,12 @@ class VocaDBTest extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
     }
+
+    /**
+     * @expectedException \Exception
+     */
+    public function testNonExistingCall()
+    {
+        $this->musicInfo->doSearch('nonexisting', 'call', ['vocadb']);
+    }
 }
