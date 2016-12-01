@@ -18,7 +18,7 @@ class ArtistTest extends \PHPUnit_Framework_TestCase
 
     public function testId()
     {
-        $id = rand(0,100);
+        $id = mt_rand(0,100);
 
         $this->model->setId($id);
         $this->assertEquals($id, $this->model->getId());
