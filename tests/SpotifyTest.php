@@ -53,6 +53,7 @@ class SpotifyTest extends PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(ArrayCollection::class, $result);
         $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
     }
 
     public function testArtistSearchWithServiceAsString()
@@ -60,6 +61,8 @@ class SpotifyTest extends PHPUnit_Framework_TestCase
         $result = $this->musicInfo->doSearch('livetune', 'artist', self::SERVICE_KEY);
 
         $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
     }
 
     public function testTrackSearchWithServiceAsArray()
@@ -67,12 +70,16 @@ class SpotifyTest extends PHPUnit_Framework_TestCase
         $result = $this->musicInfo->doSearch('Tell Your World', 'track', [ self::SERVICE_KEY ]);
 
         $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Track::class, $result->get( self::SERVICE_KEY )->first());
     }
 
     public function testTrackSearchWithServiceAsString()
     {
-        $result = $this->musicInfo->doSearch('Tell Your Yorld', 'track', self::SERVICE_KEY );
+        $result = $this->musicInfo->doSearch('Tell Your World', 'track', self::SERVICE_KEY );
 
         $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Track::class, $result->get( self::SERVICE_KEY )->first());
     }
 }
