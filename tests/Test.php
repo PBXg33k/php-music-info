@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 22-May-16
- * Time: 20:05
- */
 class Test extends PHPUnit_Framework_TestCase
 {
 
