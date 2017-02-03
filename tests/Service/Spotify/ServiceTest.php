@@ -21,7 +21,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $config = Yaml::parse(file_get_contents(__DIR__ . '/../src/Resources/config/config.yml'));
+        $config = Yaml::parse(file_get_contents(__DIR__ . '/../../../src/Resources/config/config.yml'));
         $this->musicInfo = new MusicInfo($config['music_info']);
         $this->spotifyService = $this->musicInfo->getService('spotify');
     }
