@@ -4,12 +4,17 @@
         colors="true">
     <testsuites>
         <testsuite name="tests">
-            <directory>tests</directory>
+            <directory suffix="Test.php">./tests</directory>
         </testsuite>
     </testsuites>
     <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
-            <directory suffix=".php">./src</directory>
+        <whitelist>
+            <whitelist>
+                <directory>./src/</directory>
+                <exclude>
+                    <file>./src/MusicInfo</file>
+                </exclude>
+            </whitelist>
         </whitelist>
     </filter>
     <logging>
@@ -19,4 +24,9 @@
         <log type="coverage-php" target="build/cov/coverage.cov"/>
         <log type="testdox-html" target="build/logs/testdox.html"/>
     </logging>
+
+    <php>
+        <ini name="display_errors" value="true"/>
+    </php>
+
 </phpunit>
