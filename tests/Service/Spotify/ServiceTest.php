@@ -7,7 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * Date: 30-May-16
  * Time: 15:28
  */
-class SpotifyTest extends PHPUnit_Framework_TestCase
+class ServiceTest extends PHPUnit_Framework_TestCase
 {
     const SERVICE_KEY = 'spotify';
     /**
