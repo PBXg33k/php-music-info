@@ -3,7 +3,7 @@ namespace DependencyInjection;
 
 use Pbxg33k\MusicInfo\DependencyInjection\Configuration;
 
-class ConfigurationTest extends PHPUnit_Framework_TestCase
+class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
     public function testConfig()
     {
