@@ -1,7 +1,8 @@
 <?php
+namespace DependencyInjection;
 use Pbxg33k\MusicInfo\DependencyInjection\MusicInfoExtension;
 
-class MusicInfoExtensionTest extends PHPUnit_Framework_TestCase
+class MusicInfoExtensionTest extends \PHPUnit_Framework_TestCase
 {
     public function testExtension()
     {
