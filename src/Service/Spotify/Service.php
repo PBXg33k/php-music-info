@@ -10,6 +10,7 @@ namespace Pbxg33k\MusicInfo\Service\Spotify;
 
 use Pbxg33k\MusicInfo\Service\BaseService;
 use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Artist;
+use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Track;
 use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,9 +30,14 @@ class Service extends BaseService
     protected $spotifySession;
 
     /**
-     * Endpoints
+     * @var Artist
      */
     protected $artist;
+
+    /**
+     * @var Track
+     */
+    protected $track;
 
     /**
      * {@inheritdoc}
@@ -49,6 +55,7 @@ class Service extends BaseService
         $this->setInitialized(true);
 
         $this->artist = new Artist($this);
+        $this->track = new Track($this);
 
         return $this;
     }
@@ -121,6 +128,11 @@ class Service extends BaseService
     public function artist()
     {
         return $this->artist;
+    }
+
+    public function track()
+    {
+        return $this->track;
     }
 
 }

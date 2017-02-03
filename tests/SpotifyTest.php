@@ -1,6 +1,6 @@
 <?php
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
-
+use Doctrine\Common\Collections\ArrayCollection;
 /**
  * Created by PhpStorm.
  * User: PBX_g33k
@@ -9,6 +9,7 @@ use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
  */
 class SpotifyTest extends PHPUnit_Framework_TestCase
 {
+    const SERVICE_KEY = 'spotify';
     /**
      * @var \Pbxg33k\MusicInfo\MusicInfo
      */
@@ -47,15 +48,38 @@ class SpotifyTest extends PHPUnit_Framework_TestCase
 
     public function testArtistSearchWithServiceAsArray()
     {
-        $result = $this->musicInfo->doSearch('livetune', 'artist', ['spotify']);
+        /** @var ArrayCollection $result */
+        $result = $this->musicInfo->doSearch('livetune', 'artist', [ self::SERVICE_KEY ]);
 
-        $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
     }
 
     public function testArtistSearchWithServiceAsString()
     {
-        $result = $this->musicInfo->doSearch('livetune', 'artist', 'spotify');
+        $result = $this->musicInfo->doSearch('livetune', 'artist', self::SERVICE_KEY);
 
-        $this->assertInstanceOf(\Doctrine\Common\Collections\ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
+    }
+
+    public function testTrackSearchWithServiceAsArray()
+    {
+        $result = $this->musicInfo->doSearch('Tell Your World', 'track', [ self::SERVICE_KEY ]);
+
+        $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Track::class, $result->get( self::SERVICE_KEY )->first());
+    }
+
+    public function testTrackSearchWithServiceAsString()
+    {
+        $result = $this->musicInfo->doSearch('Tell Your World', 'track', self::SERVICE_KEY );
+
+        $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Track::class, $result->get( self::SERVICE_KEY )->first());
     }
 }
