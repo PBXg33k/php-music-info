@@ -1,13 +1,9 @@
 <?php
+namespace Service\VocaDB;
+
 use Pbxg33k\MusicInfo\Service\VocaDB\Service as VocaDBService;
 
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 22-May-16
- * Time: 20:45
- */
-class ServiceTest extends PHPUnit_Framework_TestCase
+class ServiceTest extends \PHPUnit_Framework_TestCase
 {
 
     /**

@@ -1,8 +1,7 @@
 <?php
+namespace Service;
 
-use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
-
-class BaseServiceTest extends PHPUnit_Framework_TestCase
+class BaseServiceTest extends \PHPUnit_Framework_TestCase
 {
     /**
      * @var \Pbxg33k\MusicInfo\MusicInfo

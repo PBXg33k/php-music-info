@@ -1,13 +1,11 @@
 <?php
+namespace Service\Spotify;
+
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
 use Doctrine\Common\Collections\ArrayCollection;
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 15:28
- */
-class ServiceTest extends PHPUnit_Framework_TestCase
+
+
+class ServiceTest extends \PHPUnit_Framework_TestCase
 {
     const SERVICE_KEY = 'spotify';
     /**
