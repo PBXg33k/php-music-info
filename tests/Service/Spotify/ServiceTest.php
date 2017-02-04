@@ -2,12 +2,14 @@
 namespace Service\Spotify;
 
 use Pbxg33k\MusicInfo\MusicInfo;
+use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Artist;
+use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Track;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Yaml\Yaml;
 
 class ServiceTest extends \PHPUnit_Framework_TestCase
 {
+    const TEST_SEARCH_NAME = 'livetune';
     const SERVICE_KEY = 'spotify';
     /**
      * @var \Pbxg33k\MusicInfo\MusicInfo
@@ -33,8 +35,10 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
 
     public function testSpotifyServiceClasses()
     {
-        $this->assertInstanceOf('Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Artist', $this->spotifyService->getArtist());
-        $this->assertInstanceOf('Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Artist', $this->spotifyService->artist());
+        $this->assertInstanceOf(Artist::class, $this->spotifyService->getArtist());
+        $this->assertInstanceOf(Artist::class, $this->spotifyService->artist());
+        $this->assertInstanceOf(Track::class,  $this->spotifyService->getTrack());
+        $this->assertInstanceOf(Track::class,  $this->spotifyService->track());
         $this->assertInstanceOf('SpotifyWebAPI\Session', $this->spotifyService->getSpotifySession());
         $this->assertInstanceOf('SpotifyWebAPI\SpotifyWebAPI', $this->spotifyService->getApiClient());
         $this->assertTrue($this->spotifyService->isInitialized());
@@ -43,42 +47,5 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     public function testSpotifyArtistClasses()
     {
         $this->assertInstanceOf('Pbxg33k\MusicInfo\Service\Spotify\Service', $this->spotifyService->artist()->getParent());
-    }
-
-    public function testArtistSearchWithServiceAsArray()
-    {
-        /** @var ArrayCollection $result */
-        $result = $this->musicInfo->doSearch('livetune', 'artist', [ self::SERVICE_KEY ]);
-
-        $this->assertInstanceOf(ArrayCollection::class, $result);
-        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
-        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
-    }
-
-    public function testArtistSearchWithServiceAsString()
-    {
-        $result = $this->musicInfo->doSearch('livetune', 'artist', self::SERVICE_KEY);
-
-        $this->assertInstanceOf(ArrayCollection::class, $result);
-        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
-        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
-    }
-
-    public function testTrackSearchWithServiceAsArray()
-    {
-        $result = $this->musicInfo->doSearch('Tell Your World', 'track', [ self::SERVICE_KEY ]);
-
-        $this->assertInstanceOf(ArrayCollection::class, $result);
-        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
-        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Track::class, $result->get( self::SERVICE_KEY )->first());
-    }
-
-    public function testTrackSearchWithServiceAsString()
-    {
-        $result = $this->musicInfo->doSearch('Tell Your World', 'track', self::SERVICE_KEY );
-
-        $this->assertInstanceOf(ArrayCollection::class, $result);
-        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
-        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Track::class, $result->get( self::SERVICE_KEY )->first());
     }
 }

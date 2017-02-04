@@ -110,6 +110,23 @@ class Service extends BaseService
     }
 
     /**
+     * @return Track
+     */
+    public function getTrack()
+    {
+        return $this->track;
+    }
+
+    public function testArtistSearchWithServiceAsString()
+    {
+        $result = $this->musicInfo->doSearch(self::TEST_SEARCH_NAME, 'artist', self::SERVICE_KEY);
+
+        $this->assertInstanceOf(ArrayCollection::class, $result);
+        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
+        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
+    }
+
+    /**
      * @return Session
      */
     public function getSpotifySession()
