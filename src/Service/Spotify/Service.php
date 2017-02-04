@@ -1,20 +1,27 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 13:01
- */
+/*******************************************************************************
+ * This file is part of the Pbxg33k\MusicInfo package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * (c) 2017 Oguzhan uysal. All rights reserved
+ ******************************************************************************/
 
 namespace Pbxg33k\MusicInfo\Service\Spotify;
 
 use Pbxg33k\MusicInfo\Service\BaseService;
+use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Album;
 use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Artist;
 use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Track;
 use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class Service
+ * @package Pbxg33k\MusicInfo\Service\Spotify
+ */
 class Service extends BaseService
 {
     /**
@@ -40,6 +47,11 @@ class Service extends BaseService
     protected $track;
 
     /**
+     * @var Album
+     */
+    protected $album;
+
+    /**
      * {@inheritdoc}
      */
     public function init($config = [])
@@ -55,7 +67,8 @@ class Service extends BaseService
         $this->setInitialized(true);
 
         $this->artist = new Artist($this);
-        $this->track = new Track($this);
+        $this->track  = new Track($this);
+        $this->album  = new Album($this);
 
         return $this;
     }
@@ -110,6 +123,22 @@ class Service extends BaseService
     }
 
     /**
+     * @return Track
+     */
+    public function getTrack()
+    {
+        return $this->track;
+    }
+
+    /**
+     * @return Album
+     */
+    public function getAlbum()
+    {
+        return $this->album;
+    }
+
+    /**
      * @return Session
      */
     public function getSpotifySession()
@@ -125,14 +154,28 @@ class Service extends BaseService
         return $this->authorized;
     }
 
+    /**
+     * @return Artist
+     */
     public function artist()
     {
         return $this->artist;
     }
 
+    /**
+     * @return Track
+     */
     public function track()
     {
         return $this->track;
+    }
+
+    /**
+     * @return Album
+     */
+    public function album()
+    {
+        return $this->album;
     }
 
 }

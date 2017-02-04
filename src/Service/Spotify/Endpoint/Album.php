@@ -11,27 +11,30 @@
 namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use GuzzleHttp\Psr7\Uri;
 use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
+use Pbxg33k\MusicInfo\Model\BaseModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
-use Pbxg33k\MusicInfo\Model\Track as TrackModel;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
+use Pbxg33k\MusicInfo\Model\Album as AlbumModel;
 
-class Track implements IMusicServiceEndpoint
+class Album implements IMusicServiceEndpoint
 {
     const DATA_SOURCE = 'spotify';
 
+    /**
+     * @var SpotifyService
+     */
     protected $parent;
 
-    public function __construct(SpotifyService $apiService)
+    public function __construct(SpotifyService $service)
     {
-        $this->setParent($apiService);
+        $this->parent = $service;
     }
 
     /**
      * @param $apiService
      *
-     * @return $this
+     * @return mixed
      */
     public function setParent($apiService)
     {
@@ -41,21 +44,22 @@ class Track implements IMusicServiceEndpoint
     }
 
     /**
+     * Transform single item to model
+     *
      * @param $raw
      *
-     * @return TrackModel
+     * @return BaseModel
      */
     public function transformSingle($raw)
     {
-        $object = new TrackModel;
+        $object = new AlbumModel();
         $object
             ->setId($raw->id)
             ->setName($raw->name)
-            ->setExplicit($raw->explicit)
-            ->setLength($raw->duration_ms % 60)
-            ->setPreviewUri(new Uri($raw->preview_url))
-            ->setDataSource(self::DATA_SOURCE)
-            ->setRawData($raw);
+            ->setType($raw->album_type)
+            ->setUri($raw->external_urls->spotify)
+            ->setRawData($raw)
+            ->setDataSource(self::DATA_SOURCE);
 
         return $object;
     }
@@ -69,22 +73,23 @@ class Track implements IMusicServiceEndpoint
     public function transformCollection($raw)
     {
         $collection = new ArrayCollection();
-        if (is_object($raw) && isset($raw->tracks)) {
-            foreach ($raw->tracks->items as $track) {
-                $collection->add($this->transformSingle($track));
+        if (is_object($raw) && isset($raw->albums)) {
+            foreach ($raw->albums->items as $album) {
+                $collection->add($this->transformSingle($album));
             }
 
             return $collection;
         }
 
-        throw new \Exception('Transformation failed');
+        throw new \Exception('Transform failed');
     }
 
     /**
+     * Transform to models
+     *
      * @param $raw
      *
      * @return ArrayCollection
-     * @throws \Exception
      */
     public function transform($raw)
     {
@@ -92,7 +97,7 @@ class Track implements IMusicServiceEndpoint
     }
 
     /**
-     * @return SpotifyService
+     * @return mixed
      */
     public function getParent()
     {
@@ -108,7 +113,7 @@ class Track implements IMusicServiceEndpoint
      */
     public function get($arguments)
     {
-        throw new MethodNotImplementedException;
+        throw new MethodNotImplementedException();
         // TODO: Implement get() method.
     }
 
@@ -128,11 +133,11 @@ class Track implements IMusicServiceEndpoint
     /**
      * @param $id
      *
-     * @return mixed
+     * @return array|object
      */
     public function getById($id)
     {
-        return $this->getParent()->getApiClient()->getTrack($id);;
+        return $this->getByGuid($id);
     }
 
     /**
@@ -142,16 +147,16 @@ class Track implements IMusicServiceEndpoint
      */
     public function getByName($name)
     {
-        return $this->transform($this->getParent()->getApiClient()->search($name, 'track'));
+        return $this->transform($this->getParent()->getApiClient()->search($name, 'album'));
     }
 
     /**
      * @param $guid
      *
-     * @return mixed
+     * @return array|object
      */
     public function getByGuid($guid)
     {
-        return $this->getParent()->getApiClient()->getTrack($guid);
+        return $this->getParent()->getApiClient()->getAlbum($guid);
     }
 }
