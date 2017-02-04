@@ -3,9 +3,14 @@ All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- Spotify
+	- Album
 ### Changed
-- _internal_ Optimalizations
+- Dependencies
 - _internal_ Unit tests
+### Removed
+- **PHP 5.5 support**
 
 ## [0.0.2] - 2016-12-01
 ### Added

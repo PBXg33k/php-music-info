@@ -7,6 +7,7 @@ This PHP library enables you to combine multiple music related API Services to l
 ## Requirements ##
 In order to use this library your environment MUST meet the following criteria:
 * PHP 5.6 (or later)
+	* curl extension
 
 
 ## Installation ##
@@ -92,17 +93,21 @@ music_info:
 
 ## Services ##
 
-|   | Version | General | Track | Artist | Album | Comments |
-|---|:-------:|:-------:|:-----:|:------:|:-----:|:--------:|
-|Spotify | 0.1 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :heavy_multiplication_x: ||
-|VocaDB  | 0.1 | :white_check_mark: | :heavy_multiplication_x: | :white_check_mark: | :heavy_multiplication_x: ||
-|MusicBrains | 0.1 | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: ||
-|~~Echonest~~   | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Service cancelled in favor of Spotify [[1]](http://developer.echonest.com/docs/v4) |
+|             | Version                  | General                  | Track                    | Artist                   | Album                    | Comments |
+|---          |:-------:                 |:-------:                 |:-----:                   |:------:                  |:-----:                   |:--------:|
+|Spotify      | 0.1                      | :white_check_mark:       | :white_check_mark:       | :white_check_mark:       | :heavy_multiplication_x: ||
+|VocaDB       | 0.1                      | :white_check_mark:       | :heavy_multiplication_x: | :white_check_mark:       | :heavy_multiplication_x: ||
+|MusicBrains  | 0.1                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: ||
+|Discogs      | N/A                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: ||
+|~~Echonest~~ | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Service cancelled in favor of Spotify [[1]](http://developer.echonest.com/docs/v4) |
 
 ## Changelog
 
 Please see [CHANGELOG.md](CHANGELOG.md)
 
+## Todo
+
+Please see [TODO.md](TODO.md)
 
 ## License
 
