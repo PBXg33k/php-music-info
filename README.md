@@ -94,7 +94,7 @@ music_info:
 
 |   | Version | General | Track | Artist | Album | Comments |
 |---|:-------:|:-------:|:-----:|:------:|:-----:|:--------:|
-|Spotify | 0.1 | :white_check_mark: | :heavy_multiplication_x: | :white_check_mark: | :heavy_multiplication_x: ||
+|Spotify | 0.1 | :white_check_mark: | :white_check_mark: | :white_check_mark: | :heavy_multiplication_x: ||
 |VocaDB  | 0.1 | :white_check_mark: | :heavy_multiplication_x: | :white_check_mark: | :heavy_multiplication_x: ||
 |MusicBrains | 0.1 | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: ||
 |~~Echonest~~   | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Service cancelled in favor of Spotify [[1]](http://developer.echonest.com/docs/v4) |
