@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 16-Oct-16
- * Time: 22:25
- */
-
 namespace Pbxg33k\MusicInfo\Model;
 
 

@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 13:01
- */
-
 namespace Pbxg33k\MusicInfo\Service\Spotify;
 
 use Pbxg33k\MusicInfo\Service\BaseService;

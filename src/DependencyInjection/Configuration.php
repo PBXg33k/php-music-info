@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 15:11
- */
-
 namespace Pbxg33k\MusicInfo\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;

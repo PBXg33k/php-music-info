@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 16:30
- */
-
 namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;

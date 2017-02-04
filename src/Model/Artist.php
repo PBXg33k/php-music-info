@@ -1,7 +1,6 @@
 <?php
 namespace Pbxg33k\MusicInfo\Model;
 
-
 class Artist extends BaseModel
 {
     /**
