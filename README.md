@@ -97,8 +97,8 @@ music_info:
 |---          |:-------:                 |:-------:                 |:-----:                   |:------:                  |:-----:                   |:--------:|
 |Spotify      | 0.1                      | :white_check_mark:       | :white_check_mark:       | :white_check_mark:       | :heavy_multiplication_x: ||
 |VocaDB       | 0.1                      | :white_check_mark:       | :heavy_multiplication_x: | :white_check_mark:       | :heavy_multiplication_x: ||
-|MusicBrains  | 0.1                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: ||
-|Discogs      | N/A                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: ||
+|MusicBrains  | 0.1                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | _Low priority, depending on demand_ |
+|Discogs      | N/A                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Release version not decided |
 |~~Echonest~~ | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Service cancelled in favor of Spotify [[1]](http://developer.echonest.com/docs/v4) |
 
 ## Changelog
