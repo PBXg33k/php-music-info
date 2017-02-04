@@ -1,7 +1,8 @@
 <?php
-namespace Service\Spotify\Endpoint;
+namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
 use Pbxg33k\MusicInfo\Model\BaseModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
@@ -91,37 +92,43 @@ class Album implements IMusicServiceEndpoint
      */
     public function getParent()
     {
-        // TODO: Implement getParent() method.
+        return $this->parent;
     }
 
     /**
      * @param $arguments
      *
-     * @return mixed
+     * @return void
+     *
+     * @throws MethodNotImplementedException
      */
     public function get($arguments)
     {
+        throw new MethodNotImplementedException();
         // TODO: Implement get() method.
     }
 
     /**
      * @param $arguments
      *
-     * @return mixed
+     * @return void
+     *
+     * @throws MethodNotImplementedException
      */
     public function getComplete($arguments)
     {
+        throw new MethodNotImplementedException();
         // TODO: Implement getComplete() method.
     }
 
     /**
      * @param $id
      *
-     * @return mixed
+     * @return array|object
      */
     public function getById($id)
     {
-        // TODO: Implement getById() method.
+        return $this->getByGuid($id);
     }
 
     /**
@@ -131,16 +138,16 @@ class Album implements IMusicServiceEndpoint
      */
     public function getByName($name)
     {
-        // TODO: Implement getByName() method.
+        return $this->transform($this->getParent()->getApiClient()->search($name, 'album'));
     }
 
     /**
      * @param $guid
      *
-     * @return mixed
+     * @return array|object
      */
     public function getByGuid($guid)
     {
-        // TODO: Implement getByGuid() method.
+        return $this->getParent()->getApiClient()->getAlbum($guid);
     }
 }

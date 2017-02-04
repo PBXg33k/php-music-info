@@ -2,7 +2,6 @@
 namespace Pbxg33k\MusicInfo\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Pbxg33k\MusicInfo\Model\BaseModel;
 
 /**
  * Class Album

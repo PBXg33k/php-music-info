@@ -123,7 +123,7 @@ class Track implements IMusicServiceEndpoint
      */
     public function getById($id)
     {
-        return $this->getById($id);
+        return $this->getParent()->getApiClient()->getTrack($id);;
     }
 
     /**

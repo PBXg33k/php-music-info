@@ -2,12 +2,17 @@
 namespace Pbxg33k\MusicInfo\Service\Spotify;
 
 use Pbxg33k\MusicInfo\Service\BaseService;
+use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Album;
 use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Artist;
 use Pbxg33k\MusicInfo\Service\Spotify\Endpoint\Track;
 use SpotifyWebAPI\Session;
 use SpotifyWebAPI\SpotifyWebAPI;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class Service
+ * @package Pbxg33k\MusicInfo\Service\Spotify
+ */
 class Service extends BaseService
 {
     /**
@@ -33,6 +38,11 @@ class Service extends BaseService
     protected $track;
 
     /**
+     * @var Album
+     */
+    protected $album;
+
+    /**
      * {@inheritdoc}
      */
     public function init($config = [])
@@ -48,7 +58,8 @@ class Service extends BaseService
         $this->setInitialized(true);
 
         $this->artist = new Artist($this);
-        $this->track = new Track($this);
+        $this->track  = new Track($this);
+        $this->album  = new Album($this);
 
         return $this;
     }
@@ -110,13 +121,12 @@ class Service extends BaseService
         return $this->track;
     }
 
-    public function testArtistSearchWithServiceAsString()
+    /**
+     * @return Album
+     */
+    public function getAlbum()
     {
-        $result = $this->musicInfo->doSearch(self::TEST_SEARCH_NAME, 'artist', self::SERVICE_KEY);
-
-        $this->assertInstanceOf(ArrayCollection::class, $result);
-        $this->assertInstanceOf(ArrayCollection::class, $result->get( self::SERVICE_KEY ));
-        $this->assertInstanceOf(\Pbxg33k\MusicInfo\Model\Artist::class, $result->get( self::SERVICE_KEY )->first());
+        return $this->album;
     }
 
     /**
@@ -135,14 +145,28 @@ class Service extends BaseService
         return $this->authorized;
     }
 
+    /**
+     * @return Artist
+     */
     public function artist()
     {
         return $this->artist;
     }
 
+    /**
+     * @return Track
+     */
     public function track()
     {
         return $this->track;
+    }
+
+    /**
+     * @return Album
+     */
+    public function album()
+    {
+        return $this->album;
     }
 
 }
