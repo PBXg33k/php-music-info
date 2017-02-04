@@ -1,13 +1,12 @@
 <?php
+namespace Service\Spotify;
+
+use Pbxg33k\MusicInfo\MusicInfo;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
 use Doctrine\Common\Collections\ArrayCollection;
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 15:28
- */
-class SpotifyTest extends PHPUnit_Framework_TestCase
+use Symfony\Component\Yaml\Yaml;
+
+class ServiceTest extends \PHPUnit_Framework_TestCase
 {
     const SERVICE_KEY = 'spotify';
     /**
@@ -22,8 +21,8 @@ class SpotifyTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $config = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__ . '/../src/Resources/config/config.yml'));
-        $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($config['music_info']);
+        $config = Yaml::parse(file_get_contents(__DIR__ . '/../../../src/Resources/config/config.yml'));
+        $this->musicInfo = new MusicInfo($config['music_info']);
         $this->spotifyService = $this->musicInfo->getService('spotify');
     }
 

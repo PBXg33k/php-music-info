@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 15:52
- */
 class ConfigTest extends PHPUnit_Framework_TestCase
 {
     const YAML_NAMESPACE = 'music_info';
