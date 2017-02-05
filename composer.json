@@ -2,7 +2,7 @@
     "name": "pbxg33k/music-info",
     "description": "Combine the power of multiple music related API Services and get the complete information for your music",
     "require": {
-        "guzzlehttp/guzzle": "^5.0",
+        "guzzlehttp/guzzle": "^6.0",
         "symfony/dependency-injection": "^2.8|^3.1",
         "symfony/http-foundation": "^2.8|^3.1",
         "symfony/http-kernel": "^2.8|^3.1",
@@ -12,7 +12,6 @@
         "pbxg33k/pbxg33k-traits": "^1.0",
         "pbxg33k/vocadb": "v0.1.3.2",
         "jwilsson/spotify-web-api-php": "^1.3",
-        "ricbra/php-discogs-api": "^1.2",
         "pbxg33k/musicbrainz": "^0.3.0",
         "symfony/console": "^2.8|^3.2"
     },
