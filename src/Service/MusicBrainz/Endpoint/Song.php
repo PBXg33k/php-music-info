@@ -2,22 +2,19 @@
 namespace Pbxg33k\MusicInfo\Service\MusicBrainz\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use MusicBrainz\Filters\ArtistFilter;
-use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
+use MusicBrainz\Filters\RecordingFilter;
+use Pbxg33k\MusicInfo\Model\BaseModel;
+use Pbxg33k\MusicInfo\Model\Song as SongModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Service\MusicBrainz\Service;
 
-class Artist implements IMusicServiceEndpoint
+class Song implements IMusicServiceEndpoint
 {
-    const DATA_SOURCE = 'musicbrainz';
-    /**
-     * @var Service
-     */
     protected $parent;
 
     public function __construct($parent)
     {
-        $this->setParent($parent);
+        $this->parent = $parent;
     }
 
     /**
@@ -31,50 +28,44 @@ class Artist implements IMusicServiceEndpoint
     }
 
     /**
+     * Transform single item to model
+     *
      * @param $raw
      *
-     * @return ArtistModel
+     * @return BaseModel
      */
     public function transformSingle($raw)
     {
-        $object = new ArtistModel;
+        $object = new SongModel();
         $object
             ->setId($raw->id)
-            ->setName($raw->name)
-            ->setType('artist')
-            ->setRawData($raw)
-            ->setDataSource(self::DATA_SOURCE);
-
-        return $object;
+            ->setTitle($raw->title)
+            ->setDuration($raw->length)
+            ->setIsrc($raw->isrc);
     }
 
     /**
+     * Transform collection to models
+     *
      * @param $raw
      *
      * @return ArrayCollection
-     * @throws \Exception
      */
     public function transformCollection($raw)
     {
-        $collection = new ArrayCollection();
-        if(is_array($raw)) {
-            foreach ($raw as $artist) {
-                $collection->add($this->transformSingle($artist));
-            }
-        }
-
-        return $collection;
+        // TODO: Implement transformCollection() method.
     }
 
     /**
+     * Transform to models
+     *
      * @param $raw
      *
      * @return ArrayCollection
-     * @throws \Exception
      */
     public function transform($raw)
     {
-        return $this->transformCollection($raw);
+        // TODO: Implement transform() method.
     }
 
     /**
@@ -82,7 +73,7 @@ class Artist implements IMusicServiceEndpoint
      */
     public function getParent()
     {
-        return $this->parent;
+        // TODO: Implement getParent() method.
     }
 
     /**
@@ -122,7 +113,7 @@ class Artist implements IMusicServiceEndpoint
      */
     public function getByName($name)
     {
-        return $this->transform($this->parent->getApiClient()->search(new ArtistFilter(['artist' => $name])));
+        // TODO: Implement getByName() method.
     }
 
     /**

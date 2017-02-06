@@ -2,6 +2,8 @@
 namespace Pbxg33k\MusicInfo\Model;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 class Artist extends BaseModel
 {
     /**
@@ -38,6 +40,16 @@ class Artist extends BaseModel
      * @var string
      */
     protected $uri;
+
+    /**
+     * @var SongArtist[]
+     */
+    protected $songs;
+
+    public function __construct()
+    {
+        $this->songs = new ArrayCollection();
+    }
 
     /**
      * @return string
