@@ -31,7 +31,7 @@ class SearchSpotifyTrackCommand extends Command
             ->setName('music-info:search:spotify:artist')
             ->setDescription('Search an artist on Spotify')
             ->setHelp("This command will search and return an artist using the Spotify API")
-            ->addOption('save', 's', InputOption::VALUE_OPTIONAL)
+            ->addOption('save', 's', InputOption::VALUE_OPTIONAL, false)
             ->addArgument('query', InputArgument::REQUIRED, 'Artist name', false)
             ;
     }
