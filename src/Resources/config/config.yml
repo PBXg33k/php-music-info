@@ -43,3 +43,14 @@ music_info:
             application_name: Meuk
             application_version: 0.0.1
             application_url: http://www.hoehel.be
+
+services:
+    pbx_g33k.music_info:
+        class: Pbxg33k\MusicInfo\MusicInfo
+
+
+#    pbx_g33k.music_info.command.spotify.search.artist:
+#        class: Pbxg33k\MusicInfo\Command\SearchSpotifyArtistCommand
+#        calls: ['setSpotifyService']
+#        tags:
+#            - { name: console.command }

@@ -1,4 +1,5 @@
 <?php
+
 /*******************************************************************************
  * This file is part of the Pbxg33k\MusicInfo package.
  *
@@ -10,7 +11,6 @@
 namespace Pbxg33k\MusicInfo\Command;
 
 use Pbxg33k\MusicInfo\Model\Artist;
-use Pbxg33k\MusicInfo\Model\Track;
 use Pbxg33k\MusicInfo\Service\Spotify\Service;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
@@ -19,7 +19,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
-class SearchSpotifyTrackCommand extends Command
+class SearchSpotifyArtistCommand extends Command
 {
     /**
      * @var Service
@@ -29,37 +29,36 @@ class SearchSpotifyTrackCommand extends Command
     protected function configure()
     {
         $this
-            ->setName('music-info:search:spotify:track')
-            ->setDescription('Search a track on Spotify')
-            ->setHelp("This command will search and return a track using the Spotify API")
+            ->setName('music-info:search:spotify:artist')
+            ->setDescription('Search an artist on Spotify')
+            ->setHelp("This command will search and return an artist using the Spotify API")
             ->addOption('save', 'p', InputOption::VALUE_OPTIONAL, false)
-            ->addArgument('query', InputArgument::REQUIRED, 'Track title')
+            ->addArgument('query', InputArgument::REQUIRED, 'Artist name')
             ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $trackTitle = $input->getArgument('query');
-        if(!$trackTitle) {
-            throw new \InvalidArgumentException('Track title missing');
+        $artist = $input->getArgument('query');
+        if(!$artist) {
+            throw new \InvalidArgumentException('Artist missing');
         }
 
-        $result = $this->spotifyService->title()->getByName($trackTitle);
+        $result = $this->spotifyService->artist()->getByName($artist);
 
         $table = new Table($output);
         $table
-            ->setHeaders(['ID','Artist', 'Name']);
+            ->setHeaders(['ID','Artist']);
 
         if(!$result) {
             $output->writeln('No results');
         } else {
-            /** @var Track $track */
-            foreach($result as $track) {
+            /** @var Artist $artist */
+            foreach($result as $artist) {
                 $table
                     ->addRow([
-                        $track->getId(),
-                        $track->getTrackArtists(),
-                        $track->getName()
+                        $artist->getId(),
+                        $artist->getName()
                     ]);
             }
 
