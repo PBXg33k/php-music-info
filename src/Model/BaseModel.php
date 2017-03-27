@@ -9,8 +9,12 @@
 namespace Pbxg33k\MusicInfo\Model;
 
 
-class BaseModel
+use Pbxg33k\Traits\PropertyTrait;
+
+abstract class BaseModel
 {
+    use PropertyTrait;
+
     /**
      * Data source identifier
      *

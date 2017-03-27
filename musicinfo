@@ -1,0 +1,48 @@
+#!/usr/bin/env php
+<?php
+
+if (version_compare('5.6.0', PHP_VERSION, '>')) {
+    throw new \Exception(
+        sprintf(
+            'This version of PHPMusicInfo is supported on PHP 5.6, PHP 7.0, and PHP 7.1.' . PHP_EOL .
+            'You are using PHP %s (%s).' . PHP_EOL,
+            PHP_VERSION,
+            PHP_BINARY
+        )
+    );
+}
+
+if(!ini_get('date.timezone')) {
+    ini_set('date.timezone', 'UTC');
+}
+
+$composerAutoloadLocations = [
+    __DIR__ . '/../../autoload.php',
+    __DIR__ . '/../vendor/autoload.php',
+    __DIR__ . '/vendor/autoload.php'
+];
+
+$composerFound = false;
+foreach($composerAutoloadLocations as $file) {
+    if(file_exists($file)) {
+        $composerFound = true;
+        include_once $file;
+    }
+}
+
+if(!$composerFound) {
+    throw new \Exception(
+        'You need to set up the project dependencies using Composer:' . PHP_EOL . PHP_EOL .
+        '    composer install' . PHP_EOL . PHP_EOL .
+        'You can learn all about Composer on https://getcomposer.org/.' . PHP_EOL
+    );
+}
+
+unset($file);
+
+use Symfony\Component\Console\Application;
+$app = new Application('PHPMusicInfo', '0.1.0');
+$app->addCommands([
+        new \Pbxg33k\MusicInfo\Command\SearchArtistCommand()
+]);
+$app->run();
