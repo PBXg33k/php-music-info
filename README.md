@@ -1,4 +1,4 @@
-[![Build Status](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/build-status/develop) [![Latest Stable Version](https://poser.pugx.org/pbxg33k/music-info/v/stable)](https://packagist.org/packages/pbxg33k/music-info) [![Total Downloads](https://poser.pugx.org/pbxg33k/music-info/downloads)](https://packagist.org/packages/pbxg33k/music-info) [![Latest Unstable Version](https://poser.pugx.org/pbxg33k/music-info/v/unstable)](https://packagist.org/packages/pbxg33k/music-info) [![License](https://poser.pugx.org/pbxg33k/music-info/license)](https://packagist.org/packages/pbxg33k/music-info) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/?branch=develop) [![Code Coverage](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/?branch=develop)
+[![Build Status](https://travis-ci.org/PBXg33k/php-music-info.svg?branch=master)](https://travis-ci.org/PBXg33k/php-music-info) [![Latest Stable Version](https://poser.pugx.org/pbxg33k/music-info/v/stable)](https://packagist.org/packages/pbxg33k/music-info) [![Total Downloads](https://poser.pugx.org/pbxg33k/music-info/downloads)](https://packagist.org/packages/pbxg33k/music-info) [![Latest Unstable Version](https://poser.pugx.org/pbxg33k/music-info/v/unstable)](https://packagist.org/packages/pbxg33k/music-info) [![License](https://poser.pugx.org/pbxg33k/music-info/license)](https://packagist.org/packages/pbxg33k/music-info) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/PBXg33k/php-music-info/?branch=develop) [![Coverage Status](https://coveralls.io/repos/github/PBXg33k/php-music-info/badge.svg?branch=develop)](https://coveralls.io/github/PBXg33k/php-music-info?branch=develop)
 
 # MusicInfo Library #
 
@@ -7,6 +7,7 @@ This PHP library enables you to combine multiple music related API Services to l
 ## Requirements ##
 In order to use this library your environment MUST meet the following criteria:
 * PHP 5.6 (or later)
+	* curl extension
 
 
 ## Installation ##
@@ -92,17 +93,21 @@ music_info:
 
 ## Services ##
 
-|   | Version | General | Track | Artist | Album | Comments |
-|---|:-------:|:-------:|:-----:|:------:|:-----:|:--------:|
-|Spotify | 0.1 | :white_check_mark: | :heavy_multiplication_x: | :white_check_mark: | :heavy_multiplication_x: ||
-|VocaDB  | 0.1 | :white_check_mark: | :heavy_multiplication_x: | :white_check_mark: | :heavy_multiplication_x: ||
-|MusicBrains | 0.1 | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: ||
-|~~Echonest~~   | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Service cancelled in favor of Spotify [[1]](http://developer.echonest.com/docs/v4) |
+|             | Version                  | General                  | Track                    | Artist                   | Album                    | Comments |
+|---          |:-------:                 |:-------:                 |:-----:                   |:------:                  |:-----:                   |:--------:|
+|Spotify      | 0.1                      | :white_check_mark:       | :white_check_mark:       | :white_check_mark:       | :heavy_multiplication_x: ||
+|VocaDB       | 0.1                      | :white_check_mark:       | :heavy_multiplication_x: | :white_check_mark:       | :heavy_multiplication_x: ||
+|MusicBrains  | 0.1                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | _Low priority, depending on demand_ |
+|Discogs      | N/A                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Release version not decided |
+|~~Echonest~~ | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Service cancelled in favor of Spotify [[1]](http://developer.echonest.com/docs/v4) |
 
 ## Changelog
 
 Please see [CHANGELOG.md](CHANGELOG.md)
 
+## Todo
+
+Please see [TODO.md](TODO.md)
 
 ## License
 

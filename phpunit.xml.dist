@@ -1,0 +1,41 @@
+<!--
+  ~ This file is part of the Pbxg33k\MusicInfo package.
+  ~
+  ~ For the full copyright and license information, please view the LICENSE
+  ~ file that was distributed with this source code.
+  ~
+  ~ (c) 2017 Oguzhan uysal. All rights reserved
+  -->
+
+<phpunit
+        bootstrap="vendor/autoload.php"
+        verbose="true"
+        colors="true">
+    <testsuites>
+        <testsuite name="tests">
+            <directory suffix="Test.php">./tests</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist>
+            <whitelist>
+                <directory>./src/</directory>
+                <exclude>
+                    <file>./src/MusicInfo</file>
+                </exclude>
+            </whitelist>
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="build/logs/report" lowUpperBound="35"
+             highLowerBound="70"/>
+        <log type="coverage-clover" target="build/logs/clover.xml"/>
+        <log type="coverage-php" target="build/cov/coverage.cov"/>
+        <log type="testdox-html" target="build/logs/testdox.html"/>
+    </logging>
+
+    <php>
+        <ini name="display_errors" value="true"/>
+    </php>
+
+</phpunit>

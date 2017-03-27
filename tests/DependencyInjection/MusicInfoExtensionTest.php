@@ -8,10 +8,14 @@
  * (c) 2017 Oguzhan uysal. All rights reserved
  ******************************************************************************/
 
-namespace Pbxg33k\MusicInfo\Job;
+namespace DependencyInjection;
+use Pbxg33k\MusicInfo\DependencyInjection\MusicInfoExtension;
 
-
-class SearchJob
+class MusicInfoExtensionTest extends \PHPUnit_Framework_TestCase
 {
-
+    public function testExtension()
+    {
+        $ext = new MusicInfoExtension();
+        $ext->load([], new \Symfony\Component\DependencyInjection\ContainerBuilder());
+    }
 }

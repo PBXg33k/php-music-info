@@ -1,4 +1,13 @@
 <?php
+/*******************************************************************************
+ * This file is part of the Pbxg33k\MusicInfo package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * (c) 2017 Oguzhan uysal. All rights reserved
+ ******************************************************************************/
+
 namespace Model;
 
 use GuzzleHttp\Psr7\Uri;
@@ -18,7 +27,7 @@ class ArtistTest extends \PHPUnit_Framework_TestCase
 
     public function testId()
     {
-        $id = rand(0,100);
+        $id = mt_rand(0,100);
 
         $this->model->setId($id);
         $this->assertEquals($id, $this->model->getId());
