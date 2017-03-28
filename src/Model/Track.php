@@ -10,7 +10,6 @@
 
 namespace Pbxg33k\MusicInfo\Model;
 
-
 use GuzzleHttp\Psr7\Uri;
 
 /**
@@ -243,6 +242,5 @@ class Track extends BaseModel
 
         return $this;
     }
-
 
 }

@@ -36,7 +36,7 @@ class Artist implements IMusicServiceEndpoint
      */
     public function setParent($parent)
     {
-        $this->setParent($parent);
+        $this->parent = $parent;
 
         return $this;
     }
