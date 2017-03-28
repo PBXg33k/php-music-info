@@ -10,7 +10,8 @@ install:
 before_script:
   - mkdir -p build/logs
   - chmod +x bin/phpunit
+  - chmod +x bin/coveralls
 script:
   - bin/phpunit --coverage-clover build/logs/clover.xml
 after_success:
-  - travis_retry php bin/coveralls -v
+  - travis_retry bin/coveralls -v
