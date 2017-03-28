@@ -13,4 +13,4 @@ before_script:
 script:
   - bin/phpunit --coverage-clover build/logs/clover.xml
 after_success:
-  - travis_retry php vendor/bin/coveralls -v
+  - travis_retry php bin/coveralls -v
