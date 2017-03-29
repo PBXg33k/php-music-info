@@ -97,9 +97,18 @@ music_info:
 |---          |:-------:                 |:-------:                 |:-----:                   |:------:                  |:-----:                   |:--------:|
 |Spotify      | 0.1                      | :white_check_mark:       | :white_check_mark:       | :white_check_mark:       | :heavy_multiplication_x: ||
 |VocaDB       | 0.1                      | :white_check_mark:       | :heavy_multiplication_x: | :white_check_mark:       | :heavy_multiplication_x: ||
-|MusicBrains  | 0.1                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | _Low priority, depending on demand_ |
+|MusicBrainz  | 0.1                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | _Low priority, depending on demand_ |
 |Discogs      | N/A                      | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Release version not decided |
 |~~Echonest~~ | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | :heavy_multiplication_x: | Service cancelled in favor of Spotify [[1]](http://developer.echonest.com/docs/v4) |
+
+### Adding custom services ###
+
+When adding a custom service make sure the service file implements the IMusicService interface, or even better, extends the `Pbxg33k\MusicInfo\Service\BaseService` abstract class.
+The abstract class offers some basic logic and provides better compatibility with this library.
+
+When your service is code compliant you can register it by simply calling `MusicInfo->addService(IMusicService $service, string $key)`.
+When registering make sure the key is not in use, using an already registered key will override it and replace it.
+
 
 ## Changelog
 
@@ -111,7 +120,7 @@ Please see [TODO.md](TODO.md)
 
 ## License
 
-Copyright (c) 2016 Oguzhan Uysal
+Copyright (c) 2016-2017 Oguzhan Uysal
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.

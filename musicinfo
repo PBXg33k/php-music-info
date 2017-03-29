@@ -43,6 +43,7 @@ unset($file);
 use Symfony\Component\Console\Application;
 $app = new Application('PHPMusicInfo', '0.1.0');
 $app->addCommands([
-        new \Pbxg33k\MusicInfo\Command\SearchArtistCommand()
+    new \Pbxg33k\MusicInfo\Command\SearchArtistCommand(),
+    new \Pbxg33k\MusicInfo\Command\SearchTrackCommand()
 ]);
 $app->run();

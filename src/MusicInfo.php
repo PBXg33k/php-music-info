@@ -253,6 +253,7 @@ class MusicInfo
             if (!method_exists($service, $methodName)) {
                 throw new \Exception(sprintf('Method (%s) not found in %s', $methodName, get_class($service)));
             }
+
             $results->set($serviceKey, $service->{$methodName}()->getByName($argument));
         }
 

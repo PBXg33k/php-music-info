@@ -15,7 +15,7 @@ use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 use Pbxg33k\MusicInfo\Model\IMusicService;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 
-class BaseService implements IMusicService
+abstract class BaseService implements IMusicService
 {
     const ERR_METHOD_NOT_IMPLEMENTED = "Method not implemented";
     /**
