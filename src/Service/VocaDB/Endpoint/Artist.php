@@ -21,6 +21,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\VocaDB\Artist as ArtistEndpoint;
+use Pbxg33k\VocaDB\Models\Artist as VocaDBArtistModel;
 
 class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
 {
@@ -63,7 +64,7 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
     }
 
     /**
-     * @param $raw
+     * @param VocaDBArtistModel $raw
      *
      * @return ArtistModel
      */

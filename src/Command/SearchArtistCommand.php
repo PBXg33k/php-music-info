@@ -43,8 +43,6 @@ class SearchArtistCommand extends BaseCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        parent::execute($input, $output);
-
         $service = ($input->getArgument('service') != '') ? $input->getArgument('service') : null;
 
         $searchResults = $this->musicInfo->doSearch($input->getArgument('artist'), 'artist', $service);
