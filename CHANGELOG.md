@@ -6,11 +6,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - PHP 7 Support, supported PHP 5.6 and above
 - Command line tools (using symfony/command)
-    - Lookup artist (music-info:search:artist <name> [<service>])
+    - Lookup artist `music-info:search:artist <name> [<service>]`
+    - Lookup track `music-info:search:track <name> [<service>]`
 - Models
     - Album
 - Spotify
-	- Album
+    - Album
+    - Track
 
 ### Changed
 - HTTP Proxy Header vulnerability fix
