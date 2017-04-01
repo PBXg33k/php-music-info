@@ -11,6 +11,7 @@
 namespace Service\VocaDB;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\MusicInfo;
 use Pbxg33k\MusicInfo\Service\VocaDB\Service as VocaDBService;
 use Symfony\Component\Yaml\Yaml;
@@ -61,5 +62,45 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     public function testNonExistingCall()
     {
         $this->musicInfo->doSearch('nonexisting', 'call', ['vocadb']);
+    }
+
+    /**
+     * @test
+     */
+    public function willReturnArtistEndpoint()
+    {
+        $vocaDBService = $this->musicInfo->getService('vocadb');
+
+        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->artist());
+    }
+
+    /**
+     * @test
+     */
+    public function willReturnAlbumEndpoint()
+    {
+        $vocaDBService = $this->musicInfo->getService('vocadb');
+
+        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->album());
+    }
+
+    /**
+     * @test
+     */
+    public function willReturnSongEndpoint()
+    {
+        $vocaDBService = $this->musicInfo->getService('vocadb');
+
+        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->song());
+    }
+
+    /**
+     * @test
+     */
+    public function willReturnTrackEndpoint()
+    {
+        $vocaDBService = $this->musicInfo->getService('vocadb');
+
+        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->track());
     }
 }
