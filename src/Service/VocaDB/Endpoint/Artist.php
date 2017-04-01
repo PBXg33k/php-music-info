@@ -58,9 +58,9 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
         // TODO: Implement setApiService() method.
     }
 
-    public function getByName($name)
+    public function getByName($name, $complete = true)
     {
-        return $this->transform(parent::getByName($name));
+        return $this->transform(parent::getByName($name, $complete));
     }
 
     /**

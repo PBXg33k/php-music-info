@@ -98,13 +98,13 @@ class Track extends TrackEndpoint implements IMusicServiceEndpoint
      *
      * @return mixed
      */
-    public function getByGuid($guid)
+    public function getByGuid($guid, $complete = true)
     {
-        return $this->transform(parent::getById($guid));
+        return $this->transform(parent::getById($guid, $complete));
     }
 
-    public function getByName($name)
+    public function getByName($name, $complete = true)
     {
-        return $this->transform(parent::getByName($name));
+        return $this->transform(parent::getByName($name, $complete));
     }
 }
