@@ -43,4 +43,23 @@ class Test extends PHPUnit_Framework_TestCase
     {
         $this->musicInfo->doSearch('Exception Time', 'The Exception', ['idontexist']);
     }
+
+    /**
+     * @test
+     */
+    public function willInitializeServicesManually()
+    {
+
+        $config = \Symfony\Component\Yaml\Yaml::parse(file_get_contents(__DIR__ . '/../src/Resources/config/config.yml'));
+
+        // Override init_services value
+        $config['music_info']['init_services'] = false;
+
+        $this->musicInfo = new \Pbxg33k\MusicInfo\MusicInfo($config['music_info']);
+        $this->musicInfo->loadServices(false);
+
+        $vocaDBService = $this->musicInfo->initializeService($this->musicInfo->getService('vocadb'));
+
+        $this->assertTrue($vocaDBService->isInitialized());
+    }
 }

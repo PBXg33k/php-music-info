@@ -13,6 +13,9 @@ namespace Service\VocaDB;
 use Doctrine\Common\Collections\ArrayCollection;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\MusicInfo;
+use Pbxg33k\MusicInfo\Service\VocaDB\Endpoint\Album;
+use Pbxg33k\MusicInfo\Service\VocaDB\Endpoint\Artist;
+use Pbxg33k\MusicInfo\Service\VocaDB\Endpoint\Track;
 use Pbxg33k\MusicInfo\Service\VocaDB\Service as VocaDBService;
 use Symfony\Component\Yaml\Yaml;
 
@@ -71,7 +74,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $vocaDBService = $this->musicInfo->getService('vocadb');
 
-        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->artist());
+        $this->assertInstanceOf(Artist::class, $vocaDBService->artist());
     }
 
     /**
@@ -81,7 +84,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $vocaDBService = $this->musicInfo->getService('vocadb');
 
-        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->album());
+        $this->assertInstanceOf(Album::class, $vocaDBService->album());
     }
 
     /**
@@ -91,7 +94,7 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $vocaDBService = $this->musicInfo->getService('vocadb');
 
-        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->song());
+        $this->assertInstanceOf(Track::class, $vocaDBService->song());
     }
 
     /**
@@ -101,6 +104,6 @@ class ServiceTest extends \PHPUnit_Framework_TestCase
     {
         $vocaDBService = $this->musicInfo->getService('vocadb');
 
-        $this->assertInstanceOf(IMusicServiceEndpoint::class, $vocaDBService->track());
+        $this->assertInstanceOf(Track::class, $vocaDBService->track());
     }
 }
