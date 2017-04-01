@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "e311eddb24e02d5ddc36b9e8e836c633",
-    "content-hash": "485afe11c31ea0ca2e0b79f6a53179ff",
+    "hash": "7ee29d9b5b617dd1e3388359948f8bbb",
+    "content-hash": "c69763223b8d63569a1a114840b65a7d",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -581,22 +581,23 @@
         },
         {
             "name": "pbxg33k/vocadb",
-            "version": "v0.1.3.2",
+            "version": "v0.1.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PBXg33k/vocadb-php.git",
-                "reference": "4111a72b0459cc68b073a0afb44325cf65d6292c"
+                "reference": "8a4d443efddd44a12e01790de2da21b64e8876e3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PBXg33k/vocadb-php/zipball/4111a72b0459cc68b073a0afb44325cf65d6292c",
-                "reference": "4111a72b0459cc68b073a0afb44325cf65d6292c",
+                "url": "https://api.github.com/repos/PBXg33k/vocadb-php/zipball/8a4d443efddd44a12e01790de2da21b64e8876e3",
+                "reference": "8a4d443efddd44a12e01790de2da21b64e8876e3",
                 "shasum": ""
             },
             "require": {
                 "guzzlehttp/guzzle": "~5.0|~6.0"
             },
             "require-dev": {
+                "pbxg33k/pbxg33k-traits": "dev-master",
                 "phpunit/phpunit": "4.8.*@dev",
                 "symfony/console": "^3.0",
                 "symfony/var-dumper": "^3.0"
@@ -618,7 +619,7 @@
                 }
             ],
             "description": "PHP API client for the VocaDB Public API (v1)",
-            "time": "2016-03-13 19:53:02"
+            "time": "2017-03-29 18:57:10"
         },
         {
             "name": "psr/http-message",
