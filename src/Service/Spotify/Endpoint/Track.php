@@ -10,6 +10,7 @@
 namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Pbxg33k\MusicInfo\Exception\TransformationException;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use GuzzleHttp\Psr7\Uri;
 use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
@@ -78,7 +79,7 @@ class Track implements IMusicServiceEndpoint
             return $collection;
         }
 
-        throw new \Exception('Transformation failed');
+        throw new TransformationException('Expected object');
     }
 
     /**
