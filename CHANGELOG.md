@@ -2,6 +2,8 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## [Unreleased] - N/A
+
 ## [0.0.4] - 2017-04-02
 ### Added
 - PHP 7 Support, supported PHP 5.6 and above
@@ -45,7 +47,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 	- Artist
 - Unit tests
 
-[Unreleased]: https://github.com/PBXg33k/php-music-info/compare/v0.0.5...HEAD
+[Unreleased]: https://github.com/PBXg33k/php-music-info/compare/v0.0.4...HEAD
 [0.0.4]: https://github.com/PBXg33k/php-music-info/compare/v0.0.3...v0.0.4
 [0.0.3]: https://github.com/PBXg33k/php-music-info/compare/v0.0.2...v0.0.3
 [0.0.2]: https://github.com/PBXg33k/php-music-info/compare/v0.0.1...v0.0.2
