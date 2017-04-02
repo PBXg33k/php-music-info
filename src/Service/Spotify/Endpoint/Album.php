@@ -157,6 +157,6 @@ class Album implements IMusicServiceEndpoint
      */
     public function getByGuid($guid)
     {
-        return $this->getParent()->getApiClient()->getAlbum($guid);
+        return $this->transform($this->getParent()->getApiClient()->getAlbum($guid));
     }
 }
