@@ -26,6 +26,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('music_info');
 
+        // @codingStandardsIgnoreStart
         $rootNode
             ->children()
                 ->booleanNode('init_services')->defaultTrue()->end()
@@ -47,6 +48,8 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end()
         ;
+
+        // @codingStandardsIgnoreEnd
 
         return $treeBuilder;
     }

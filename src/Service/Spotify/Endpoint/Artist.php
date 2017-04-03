@@ -137,7 +137,7 @@ class Artist implements IMusicServiceEndpoint
             ->setRawData($raw)
             ->setDataSource(self::DATA_SOURCE);
 
-        if(is_array($raw->images) && count($raw->images) >= 1) {
+        if (is_array($raw->images) && count($raw->images) >= 1) {
             $object->setImage($raw->images[array_keys($raw->images)[0]]->url);
         }
 

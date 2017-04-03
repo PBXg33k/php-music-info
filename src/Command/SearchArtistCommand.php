@@ -47,14 +47,16 @@ class SearchArtistCommand extends BaseCommand
 
         $searchResults = $this->musicInfo->doSearch($input->getArgument('artist'), 'artist', $service);
 
-        $resultsTable = $this->generateTableForSearchResult($searchResults, [
+        $resultsTable = $this->generateTableForSearchResult(
+            $searchResults, [
             'id'    => 'ID',
             'name'  => 'Name',
             'image' => 'Image URL',
             'type'  => 'Type',
             'dataSource' => 'Source',
             'uri'   => 'URL'
-        ], new Table($output));
+            ], new Table($output)
+        );
 
         $resultsTable->render();
     }

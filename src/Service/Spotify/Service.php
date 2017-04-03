@@ -20,6 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class Service
+ *
  * @package Pbxg33k\MusicInfo\Service\Spotify
  */
 class Service extends BaseService

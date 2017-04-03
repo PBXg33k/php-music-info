@@ -48,7 +48,7 @@ class Track extends TrackEndpoint implements IMusicServiceEndpoint
     /**
      * @param $apiService
      *
-     * @return mixed
+     * @return Track
      */
     public function setParent($apiService)
     {
@@ -74,7 +74,7 @@ class Track extends TrackEndpoint implements IMusicServiceEndpoint
         var_dump(
             __FILE__, __LINE__,
             $raw
-        );die();
+        ); die();
 
         return $object;
 
@@ -120,7 +120,7 @@ class Track extends TrackEndpoint implements IMusicServiceEndpoint
     /**
      * @param $guid
      *
-     * @return mixed
+     * @return ArrayCollection
      */
     public function getByGuid($guid, $complete = true)
     {

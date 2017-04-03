@@ -21,7 +21,12 @@
     "require-dev": {
         "phpunit/phpunit": "^5.7",
         "satooshi/php-coveralls": "^1.0",
-        "symfony/debug": "^3.2"
+        "symfony/debug": "^3.2",
+        "phpmd/phpmd": "@stable",
+        "squizlabs/php_codesniffer": "^2.8",
+        "phploc/phploc": "^3.0",
+        "sebastian/phpcpd": "^3.0",
+        "pdepend/pdepend": "^2.5"
     },
     "autoload": {
         "psr-4": {

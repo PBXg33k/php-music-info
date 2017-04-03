@@ -22,7 +22,6 @@ use Psr\Cache\CacheItemPoolInterface;
  *      - Extend your implementation with extra methods and call those in the methods defined in this interface
  *      - Contribute and help development by opening a Pull Request with your changes, accompanied with description
  *
- *
  * @package Pbxg33k\MusicInfo\Models
  */
 interface IMusicService
@@ -62,6 +61,7 @@ interface IMusicService
 
     /**
      * Get the API Library client
+     *
      * @return mixed
      */
     public function getApiClient();

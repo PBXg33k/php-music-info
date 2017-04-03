@@ -41,7 +41,8 @@ class SearchTrackCommand extends BaseCommand
 
         $searchResults = $this->musicInfo->doSearch($input->getArgument('track'), 'track', $service);
 
-        $resultsTable = $this->generateTableForSearchResult($searchResults, [
+        $resultsTable = $this->generateTableForSearchResult(
+            $searchResults, [
             'id'    => 'ID',
             'name'  => 'Name',
             'image' => 'Image URL',
@@ -49,7 +50,8 @@ class SearchTrackCommand extends BaseCommand
             'type'  => 'Type',
             'dataSource' => 'Source',
             'uri'   => 'URL'
-        ], new Table($output));
+            ], new Table($output)
+        );
 
         $resultsTable->render();
     }
