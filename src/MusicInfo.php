@@ -109,7 +109,7 @@ class MusicInfo
             /**
 * 
              *
- * @var IMusicService $client 
+             * @var IMusicService $client 
 */
             $client = new $fqcn();
             $client->setConfig($this->mergeConfig($service));

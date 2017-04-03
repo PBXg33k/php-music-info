@@ -84,8 +84,8 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
     public function transformCollection($raw)
     {
         $collection = new ArrayCollection();
-        if($raw instanceof AlbumCollection) {
-            foreach($raw->collection as $album) {
+        if ($raw instanceof AlbumCollection) {
+            foreach ($raw->collection as $album) {
                 $collection->add($this->transformSingle($album));
             }
 
