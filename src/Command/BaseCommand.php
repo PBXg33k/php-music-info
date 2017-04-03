@@ -43,7 +43,7 @@ abstract class BaseCommand extends Command
 
     protected function configure()
     {
-        if(!$this->musicInfo) {
+        if (!$this->musicInfo) {
             $this->initializeMusicInfo();
         }
 
@@ -57,7 +57,7 @@ abstract class BaseCommand extends Command
 
     protected function initialize(InputInterface $input, OutputInterface $output)
     {
-        if($input->getOption('debug')) {
+        if ($input->getOption('debug')) {
             Debug::enable();
         }
 
@@ -67,14 +67,14 @@ abstract class BaseCommand extends Command
     /**
      * @param       $collection
      * @param       $columns
-     * @param Table $table
+     * @param Table      $table
      * @return Table
      */
     protected function generateTableForSearchResult($collection, $columns, Table $table)
     {
         $table->setHeaders(array_values($columns));
 
-        foreach($collection as $service => $serviceResult) {
+        foreach ($collection as $service => $serviceResult) {
             $table = $this->generateTableRows($serviceResult, $columns, $table);
         }
 
@@ -84,15 +84,15 @@ abstract class BaseCommand extends Command
     /**
      * @param       $collection
      * @param       $columns
-     * @param Table $table
+     * @param Table      $table
      * @return Table
      */
     protected function generateTableRows($collection, $columns, Table $table)
     {
-        foreach($collection as $item) {
+        foreach ($collection as $item) {
             $row = [];
 
-            foreach($columns as $columnKey => $columnValue) {
+            foreach ($columns as $columnKey => $columnValue) {
                 $row[] = $item->getPropertyValue($columnKey);
             }
 

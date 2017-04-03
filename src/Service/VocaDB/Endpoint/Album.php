@@ -65,9 +65,13 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
         $object
             ->setId($raw->getId())
             ->setName($raw->getName())
-            ->setArtists(new ArrayCollection([
-                (new ArtistModel())->setName($raw->getName())
-            ]))
+            ->setArtists(
+                new ArrayCollection(
+                    [
+                    (new ArtistModel())->setName($raw->getName())
+                    ]
+                )
+            )
             ->setType($raw->getDiscType())
             ->setImage($raw->getMainPicture()->urlThumb)
             ->setReleaseDate(new \DateTime($raw->getReleaseDate()->formatted))
@@ -80,8 +84,8 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
     public function transformCollection($raw)
     {
         $collection = new ArrayCollection();
-        if($raw instanceof AlbumCollection) {
-            foreach($raw->collection as $album) {
+        if ($raw instanceof AlbumCollection) {
+            foreach ($raw->collection as $album) {
                 $collection->add($this->transformSingle($album));
             }
 

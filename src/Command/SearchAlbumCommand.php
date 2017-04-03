@@ -41,13 +41,15 @@ class SearchAlbumCommand extends BaseCommand
 
         $searchResult = $this->musicInfo->doSearch($input->getArgument('album'), 'album', $service);
 
-        $resultsTable = $this->generateTableForSearchResult($searchResult, [
+        $resultsTable = $this->generateTableForSearchResult(
+            $searchResult, [
             'id' => 'ID',
             'name' => 'Name',
             'type' => 'Type',
             'image' => 'Image',
             'dataSource' => 'Source'
-        ], new Table($output));
+            ], new Table($output)
+        );
 
         $resultsTable->render();
 

@@ -14,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Album
+ *
  * @package Model
  */
 class Album extends BaseModel
