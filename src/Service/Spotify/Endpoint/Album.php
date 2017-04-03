@@ -16,6 +16,7 @@ use Pbxg33k\MusicInfo\Model\BaseModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
 use Pbxg33k\MusicInfo\Model\Album as AlbumModel;
+use Psr\Cache\CacheItemPoolInterface;
 
 class Album implements IMusicServiceEndpoint
 {
@@ -26,9 +27,10 @@ class Album implements IMusicServiceEndpoint
      */
     protected $parent;
 
-    public function __construct(SpotifyService $service)
+    public function __construct(SpotifyService $service, CacheItemPoolInterface $cache)
     {
         $this->parent = $service;
+        $this->setCache($cache);
     }
 
     /**
@@ -39,6 +41,17 @@ class Album implements IMusicServiceEndpoint
     public function setParent($apiService)
     {
         $this->parent = $apiService;
+
+        return $this;
+    }
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->cache = $cacheItemPool;
 
         return $this;
     }

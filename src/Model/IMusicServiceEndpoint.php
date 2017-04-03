@@ -12,6 +12,7 @@ namespace Pbxg33k\MusicInfo\Model;
 
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Psr\Cache\CacheItemPoolInterface;
 
 interface IMusicServiceEndpoint
 {
@@ -21,6 +22,13 @@ interface IMusicServiceEndpoint
      * @return mixed
      */
     public function setParent($apiService);
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     *
+     * @return mixed
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool);
 
     /**
      * Transform single item to model

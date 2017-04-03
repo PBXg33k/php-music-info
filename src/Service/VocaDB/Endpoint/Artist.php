@@ -22,6 +22,8 @@ use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\VocaDB\Artist as ArtistEndpoint;
 use Pbxg33k\VocaDB\Models\Artist as VocaDBArtistModel;
+use Pbxg33k\VocaDB\Client;
+use Psr\Cache\CacheItemPoolInterface;
 
 class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
 {
@@ -29,6 +31,28 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
      *
      */
     const DATA_SOURCE = 'vocadb';
+
+    /**
+     * @var CacheItemPoolInterface
+     */
+    protected $cache;
+
+    public function __construct(Client $client, CacheItemPoolInterface $cache)
+    {
+        $this->setCache($cache);
+        parent::__construct($client);
+    }
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->cache = $cacheItemPool;
+
+        return $this;
+    }
 
     /**
      * @return mixed
@@ -60,7 +84,22 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
 
     public function getByName($name, $complete = true)
     {
-        return $this->transform(parent::getByName($name, $complete));
+        $cacheKey = substr(sprintf(
+            '%s_get_%s',
+            self::DATA_SOURCE,
+            preg_replace('~[A-Za-z0-9\.\_]~', '_',$name)
+        ),0,64);
+
+        $cachedObject = $this->cache->getItem($cacheKey);
+
+        if(!$cachedObject->isHit()) {
+            $result = $this->transform(parent::getByName($name, $complete));
+            $cachedObject->set($result);
+        } else {
+            $result = $cachedObject->get();
+        }
+
+        return $result;
     }
 
     /**
@@ -70,13 +109,27 @@ class Artist extends ArtistEndpoint implements IMusicServiceEndpoint
      */
     public function transformSingle($raw)
     {
-        $object = new ArtistModel;
-        $object
-            ->setId($raw->getId())
-            ->setName($raw->getName())
-            ->setType($raw->getArtistType())
-            ->setDataSource(self::DATA_SOURCE)
-            ->setRawData($raw);
+        $cacheKey = substr(sprintf(
+            '%s_transform_%s',
+            self::DATA_SOURCE,
+            preg_replace('~[A-Za-z0-9\.\_]~', '_',$raw->getDefaultName())
+        ),0,64);
+
+        $cachedObject = $this->cache->getItem($cacheKey);
+
+        if(!$cachedObject->isHit()) {
+            $object = new ArtistModel;
+            $object
+                ->setId($raw->getId())
+                ->setName($raw->getName())
+                ->setType($raw->getArtistType())
+                ->setDataSource(self::DATA_SOURCE)
+                ->setRawData($raw);
+            $cachedObject->set($cachedObject);
+        } else {
+            /** @var ArtistModel $object */
+            $object = $cachedObject->get();
+        }
 
         return $object;
     }

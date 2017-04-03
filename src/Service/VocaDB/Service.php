@@ -32,9 +32,9 @@ class Service extends BaseService
         $this->setInitialized(true);
 
         // Override Client endpoints (optional)
-        $this->apiClient->artist = new Endpoint\Artist($this->getApiClient());
-        $this->apiClient->album = new Endpoint\Album($this->getApiClient());
-        $this->apiClient->song = new Endpoint\Track($this->getApiClient());
+        $this->apiClient->artist = new Endpoint\Artist($this->getApiClient(), $this->getCache());
+        $this->apiClient->album = new Endpoint\Album($this->getApiClient(), $this->getCache());
+        $this->apiClient->song = new Endpoint\Track($this->getApiClient(), $this->getCache());
 
         return $this;
     }

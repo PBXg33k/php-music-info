@@ -17,6 +17,8 @@ use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 use Pbxg33k\MusicInfo\Model\IMusicService;
 use Pbxg33k\MusicInfo\Service\BaseService;
 use Pbxg33k\Traits\PropertyTrait;
+use Psr\Cache\CacheItemPoolInterface;
+use Symfony\Component\Cache\Adapter\NullAdapter;
 
 class MusicInfo
 {
@@ -37,6 +39,11 @@ class MusicInfo
     protected $config;
 
     /**
+     * @var CacheItemPoolInterface
+     */
+    protected $cache;
+
+    /**
      * Supported Services
      * @var array
      */
@@ -52,6 +59,9 @@ class MusicInfo
     public function __construct($config)
     {
         $this->config = $config;
+
+        // Set NullAdapter for cache to prevent exceptions
+        $this->setCache(new NullAdapter());
 
         $this->services = new ArrayCollection();
         $this->setClient(
@@ -69,6 +79,7 @@ class MusicInfo
         } else {
             throw new ServiceConfigurationException("musicinfo.services is required");
         }
+
     }
 
     /**
@@ -92,6 +103,25 @@ class MusicInfo
     }
 
     /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->cache = $cacheItemPool;
+
+        return $this;
+    }
+
+    /**
+     * @return CacheItemPoolInterface
+     */
+    public function getCache()
+    {
+        return $this->cache;
+    }
+
+    /**
      * Load service
      *
      * @param $service
@@ -109,6 +139,7 @@ class MusicInfo
             $client = new $fqcn();
             $client->setConfig($this->mergeConfig($service));
             $client->setClient($this->getClient());
+            $client->setCache($this->getCache());
             if ($init === true) {
                 $client->init();
             }

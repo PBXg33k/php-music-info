@@ -22,11 +22,37 @@ use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\VocaDB\Album as AlbumEndpoint;
 use Pbxg33k\MusicInfo\Model\Album as AlbumModel;
+use Pbxg33k\VocaDB\Client;
 use Pbxg33k\VocaDB\Models\Collections\AlbumCollection;
 use Pbxg33k\VocaDB\Models\Album as VocaDBModel;
+use Psr\Cache\CacheItemPoolInterface;
 
 class Album extends AlbumEndpoint implements IMusicServiceEndpoint
 {
+    const DATA_SOURCE = 'vocadb';
+
+    /**
+     * @var CacheItemPoolInterface
+     */
+    protected $cache;
+
+    public function __construct(Client $client, CacheItemPoolInterface $cache)
+    {
+        $this->setCache($cache);
+        parent::__construct($client);
+    }
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->cache = $cacheItemPool;
+
+        return $this;
+    }
+
     /**
      * @return mixed
      */

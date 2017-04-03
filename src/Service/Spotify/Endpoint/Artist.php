@@ -15,18 +15,23 @@ use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
 use Pbxg33k\MusicInfo\Model\Artist as ArtistModel;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
+use Psr\Cache\CacheItemPoolInterface;
 
 class Artist implements IMusicServiceEndpoint
 {
     const DATA_SOURCE = 'spotify';
+
     /**
      * @var SpotifyService
      */
     protected $parent;
 
-    public function __construct(SpotifyService $apiService)
+    protected $cache;
+
+    public function __construct(SpotifyService $apiService, CacheItemPoolInterface $cache)
     {
         $this->parent = $apiService;
+        $this->setCache($cache);
     }
 
     /**
@@ -47,6 +52,17 @@ class Artist implements IMusicServiceEndpoint
     public function getParent()
     {
         return $this->parent;
+    }
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->cache = $cacheItemPool;
+
+        return $this;
     }
 
     /**

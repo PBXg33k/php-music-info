@@ -14,6 +14,7 @@ use GuzzleHttp\ClientInterface;
 use Pbxg33k\MusicInfo\Exception\ServiceConfigurationException;
 use Pbxg33k\MusicInfo\Model\IMusicService;
 use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
+use Psr\Cache\CacheItemPoolInterface;
 
 class BaseService implements IMusicService
 {
@@ -28,6 +29,11 @@ class BaseService implements IMusicService
     protected $config;
 
     protected $initialized = false;
+
+    /**
+     * @var CacheItemPoolInterface
+     */
+    protected $cache;
 
     /**
      * @return ClientInterface
@@ -88,6 +94,27 @@ class BaseService implements IMusicService
 
         return $this;
     }
+
+    /**
+     * @return CacheItemPoolInterface
+     */
+    public function getCache()
+    {
+        return $this->cache;
+    }
+
+    /**
+     * @param CacheItemPoolInterface $cache
+     * @return BaseService
+     */
+    public function setCache(CacheItemPoolInterface $cache)
+    {
+        $this->cache = $cache;
+
+        return $this;
+    }
+
+
 
     /**
      * @return boolean

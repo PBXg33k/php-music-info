@@ -14,12 +14,36 @@ use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\VocaDB\Song as TrackEndpoint;
 use Pbxg33k\VocaDB\Models\Track as VocaDBTrackModel;
 use Pbxg33k\MusicInfo\Model\Track as TrackModel;
+use Pbxg33k\VocaDB\Client;
+use Psr\Cache\CacheItemPoolInterface;
 
 class Track extends TrackEndpoint implements IMusicServiceEndpoint
 {
     const DATA_SOURCE = 'vocadb';
 
+    /**
+     * @var CacheItemPoolInterface
+     */
+    protected $cache;
+
     protected $parent;
+
+    public function __construct(Client $client, CacheItemPoolInterface $cache)
+    {
+        $this->setCache($cache);
+        parent::__construct($client);
+    }
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->cache = $cacheItemPool;
+
+        return $this;
+    }
 
     /**
      * @param $apiService

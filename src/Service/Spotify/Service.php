@@ -66,9 +66,9 @@ class Service extends BaseService
         $this->requestCredentialsToken($config['scopes']);
         $this->setInitialized(true);
 
-        $this->artist = new Artist($this);
-        $this->track  = new Track($this);
-        $this->album  = new Album($this);
+        $this->artist = new Artist($this, $this->getCache());
+        $this->track  = new Track($this, $this->getCache());
+        $this->album  = new Album($this, $this->getCache());
 
         return $this;
     }

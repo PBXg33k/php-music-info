@@ -16,6 +16,7 @@ use GuzzleHttp\Psr7\Uri;
 use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
 use Pbxg33k\MusicInfo\Model\Track as TrackModel;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
+use Psr\Cache\CacheItemPoolInterface;
 
 class Track implements IMusicServiceEndpoint
 {
@@ -23,9 +24,10 @@ class Track implements IMusicServiceEndpoint
 
     protected $parent;
 
-    public function __construct(SpotifyService $apiService)
+    public function __construct(SpotifyService $apiService, CacheItemPoolInterface $cache)
     {
         $this->setParent($apiService);
+        $this->setCache($cache);
     }
 
     /**
@@ -36,6 +38,17 @@ class Track implements IMusicServiceEndpoint
     public function setParent($apiService)
     {
         $this->parent = $apiService;
+
+        return $this;
+    }
+
+    /**
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return $this
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool)
+    {
+        $this->cache = $cacheItemPool;
 
         return $this;
     }

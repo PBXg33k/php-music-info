@@ -11,6 +11,7 @@
 namespace Pbxg33k\MusicInfo\Model;
 
 use GuzzleHttp\ClientInterface;
+use Psr\Cache\CacheItemPoolInterface;
 
 /**
  * MusicService Interface.
@@ -64,6 +65,21 @@ interface IMusicService
      * @return mixed
      */
     public function getApiClient();
+
+    /**
+     * Set a PSR-6 compatible cache adapter
+     *
+     * @param CacheItemPoolInterface $cacheItemPool
+     * @return mixed
+     */
+    public function setCache(CacheItemPoolInterface $cacheItemPool);
+
+    /**
+     * Get cache adapter
+     *
+     * @return mixed
+     */
+    public function getCache();
 
     /**
      * Service specific initializer
