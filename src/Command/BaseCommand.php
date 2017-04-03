@@ -67,7 +67,7 @@ abstract class BaseCommand extends Command
     /**
      * @param       $collection
      * @param       $columns
-     * @param Table $table
+     * @param Table      $table
      * @return Table
      */
     protected function generateTableForSearchResult($collection, $columns, Table $table)
@@ -84,7 +84,7 @@ abstract class BaseCommand extends Command
     /**
      * @param       $collection
      * @param       $columns
-     * @param Table $table
+     * @param Table      $table
      * @return Table
      */
     protected function generateTableRows($collection, $columns, Table $table)

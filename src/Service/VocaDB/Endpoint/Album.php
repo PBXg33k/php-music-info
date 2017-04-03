@@ -65,9 +65,13 @@ class Album extends AlbumEndpoint implements IMusicServiceEndpoint
         $object
             ->setId($raw->getId())
             ->setName($raw->getName())
-            ->setArtists(new ArrayCollection([
-                (new ArtistModel())->setName($raw->getName())
-            ]))
+            ->setArtists(
+                new ArrayCollection(
+                    [
+                    (new ArtistModel())->setName($raw->getName())
+                    ]
+                )
+            )
             ->setType($raw->getDiscType())
             ->setImage($raw->getMainPicture()->urlThumb)
             ->setReleaseDate(new \DateTime($raw->getReleaseDate()->formatted))

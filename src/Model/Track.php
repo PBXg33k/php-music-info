@@ -14,6 +14,7 @@ use GuzzleHttp\Psr7\Uri;
 
 /**
  * Class Track
+ *
  * @package Model
  */
 class Track extends BaseModel
