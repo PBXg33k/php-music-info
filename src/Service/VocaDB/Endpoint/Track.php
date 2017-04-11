@@ -45,12 +45,9 @@ class Track extends TrackEndpoint implements IMusicServiceEndpoint
         $object = new TrackModel();
         $object
             ->setId($raw->getId())
-            ->setName($raw->getName());
-
-        var_dump(
-            __FILE__, __LINE__,
-            $raw
-        ); die();
+            ->setName($raw->getName())
+            ->setDataSource(self::DATA_SOURCE)
+            ->setRawData($raw);
 
         return $object;
 
