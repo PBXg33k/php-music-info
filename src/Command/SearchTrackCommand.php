@@ -55,14 +55,4 @@ class SearchTrackCommand extends BaseCommand
 
         $resultsTable->render();
     }
-
-    /**
-     * Set Music info property
-     *
-     * @param MusicInfo $musicInfo
-     */
-    public function setMusicInfo(MusicInfo $musicInfo)
-    {
-        $this->musicInfo = $musicInfo;
-    }
 }
