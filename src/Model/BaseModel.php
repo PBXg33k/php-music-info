@@ -60,7 +60,7 @@ abstract class BaseModel
     }
 
     /**
-     * @param array $rawData
+     * @param mixed $rawData
      *
      * @return BaseModel
      */

@@ -10,10 +10,12 @@
 
 namespace Pbxg33k\MusicInfo\Model;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use GuzzleHttp\Psr7\Uri;
 
 /**
  * Class Track
+ *
  * @package Model
  */
 class Track extends BaseModel
@@ -54,12 +56,12 @@ class Track extends BaseModel
     protected $preview_uri;
 
     /**
-     * @var
+     * @var ArrayCollection
      */
     protected $albumTrack;
 
     /**
-     * @var
+     * @var ArrayCollection
      */
     protected $trackArtists;
 
@@ -179,6 +181,20 @@ class Track extends BaseModel
     public function setTrackArtists($trackArtists)
     {
         $this->trackArtists = $trackArtists;
+
+        return $this;
+    }
+
+    public function addTrackArtist(Artist $artist)
+    {
+        $this->trackArtists->add($artist);
+
+        return $this;
+    }
+
+    public function removeTrackArtist(Artist $artist)
+    {
+        $this->trackArtists->removeElement($artist);
 
         return $this;
     }

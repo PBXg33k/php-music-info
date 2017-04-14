@@ -2,16 +2,16 @@
 /**
  * Created by PhpStorm.
  * User: oguzu
- * Date: 28-3-2017
- * Time: 20:26
+ * Date: 11-4-2017
+ * Time: 23:06
  */
 
 
-use Pbxg33k\MusicInfo\Command\SearchArtistCommand;
+use Pbxg33k\MusicInfo\Command\SearchAlbumCommand;
 use Symfony\Component\Console\Tester\CommandTester;
 
 
-class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
+class SearchAlbumCommandTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var CommandTester
@@ -25,7 +25,7 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $command = new SearchArtistCommand();
+        $command = new SearchAlbumCommand();
 
 //        $musicInfo = $this->musicInfo = $this->createMock(\Pbxg33k\MusicInfo\MusicInfo::class);
 //
@@ -39,21 +39,21 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function willSearchArtistOnMultipleServices()
+    public function willSearchAlbumOnMultipleServices()
     {
 //        $this->musicInfo->expects($this->once())
 //            ->method('doSearch')
 //            ->willReturn([
 //                'vocadb' => [
-//                    $this->createTestArtist('vocadb')
+//                    $this->createTestAlbum('vocadb')
 //                ],
 //                'spotify' => [
-//                    $this->createTestArtist('spotify')
+//                    $this->createTestAlbum('spotify')
 //                ]
 //            ]);
 
         $this->commandTester->execute([
-            'artist'  => 'livetune'
+            'album' => 'Tell Your World'
         ]);
 
         $output = $this->commandTester->getDisplay();
@@ -72,12 +72,12 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
 //            ->method('doSearch')
 //            ->willReturn([
 //                $service => [
-//                    $this->createTestArtist($service)
+//                    $this->createTestAlbum($service)
 //                ]
 //            ]);
 
         $this->commandTester->execute([
-            'artist'  => 'livetune',
+            'album' => 'Tell Your World',
             'service' => $service
         ]);
 
@@ -86,19 +86,16 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
         $this->assertNotContains('spotify', $output);
     }
 
-    protected function createTestArtist($service)
+    protected function createTestAlbum($dataSource)
     {
-        $artist = new \Pbxg33k\MusicInfo\Model\Artist();
-        $artist
+        $album = new \Pbxg33k\MusicInfo\Model\Album();
+        $album
             ->setId(mt_rand(0,100))
             ->setName('Test name')
-            ->setImage('testimage')
-            ->setType('foo')
-            ->setUri("http://www.google.nl/")
-            ->setDataSource($service);
+            ->setType('single')
+            ->setImage('uri')
+            ->setDataSource($dataSource);
 
-        return $artist;
-
+        return $album;
     }
-
 }

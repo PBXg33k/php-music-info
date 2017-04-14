@@ -38,6 +38,7 @@ class MusicInfo
 
     /**
      * Supported Services
+     *
      * @var array
      */
     protected $supportedServices = [];
@@ -105,7 +106,11 @@ class MusicInfo
     {
         $fqcn = implode('\\', ['Pbxg33k', 'MusicInfo', 'Service', $service, 'Service']);
         if (class_exists($fqcn)) {
-            /** @var IMusicService $client */
+            /**
+* 
+             *
+             * @var IMusicService $client 
+*/
             $client = new $fqcn();
             $client->setConfig($this->mergeConfig($service));
             $client->setClient($this->getClient());
@@ -235,9 +240,9 @@ class MusicInfo
     /**
      * Perform Multi-service search
      *
-     * @param      $argument
-     * @param      $type
-     * @param null $servicesArg
+     * @param $argument
+     * @param $type
+     * @param null     $servicesArg
      *
      * @return ArrayCollection
      * @throws \Exception
@@ -253,6 +258,7 @@ class MusicInfo
             if (!method_exists($service, $methodName)) {
                 throw new \Exception(sprintf('Method (%s) not found in %s', $methodName, get_class($service)));
             }
+
             $results->set($serviceKey, $service->{$methodName}()->getByName($argument));
         }
 
