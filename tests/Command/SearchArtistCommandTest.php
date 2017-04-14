@@ -18,9 +18,18 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
      */
     protected $commandTester;
 
+    /**
+     * @var PHPUnit_Framework_MockObject_MockObject
+     */
+    protected $musicInfo;
+
     public function setUp()
     {
         $command = new SearchArtistCommand();
+
+        $musicInfo = $this->musicInfo = $this->createMock(\Pbxg33k\MusicInfo\MusicInfo::class);
+
+        $command->setMusicInfo($musicInfo);
 
         $this->commandTester = new CommandTester($command);
 
@@ -32,6 +41,17 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
      */
     public function willSearchArtistOnMultipleServices()
     {
+        $this->musicInfo->expects($this->once())
+            ->method('doSearch')
+            ->willReturn([
+                'vocadb' => [
+                    $this->createTestArtist('vocadb')
+                ],
+                'spotify' => [
+                    $this->createTestArtist('spotify')
+                ]
+            ]);
+
         $this->commandTester->execute([
             'artist'  => 'livetune'
         ]);
@@ -46,13 +66,39 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
      */
     public function willSearchArtistOnlyOnSelectedService()
     {
+        $service = 'vocadb';
+
+        $this->musicInfo->expects($this->once())
+            ->method('doSearch')
+            ->willReturn([
+                $service => [
+                    $this->createTestArtist($service)
+                ]
+            ]);
+
         $this->commandTester->execute([
             'artist'  => 'livetune',
-            'service' => 'vocadb'
+            'service' => $service
         ]);
 
         $output = $this->commandTester->getDisplay();
-        $this->assertContains('vocadb', $output);
+        $this->assertContains($service, $output);
         $this->assertNotContains('spotify', $output);
     }
+
+    protected function createTestArtist($service)
+    {
+        $artist = new \Pbxg33k\MusicInfo\Model\Artist();
+        $artist
+            ->setId(mt_rand(0,100))
+            ->setName('Test name')
+            ->setImage('testimage')
+            ->setType('foo')
+            ->setUri("http://www.google.nl/")
+            ->setDataSource($service);
+
+        return $artist;
+
+    }
+
 }
