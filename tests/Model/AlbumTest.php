@@ -116,7 +116,7 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
     public function testReleaseDate()
     {
-        $releasedate = '2017-04-01';
+        $releasedate = new \DateTime();
 
         $this->model->setReleaseDate($releasedate);
         $this->assertEquals($releasedate, $this->model->getReleaseDate());
