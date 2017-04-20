@@ -7,13 +7,13 @@
  *
  * (c) 2017 Oguzhan uysal. All rights reserved
  ******************************************************************************/
-
 namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Pbxg33k\MusicInfo\Exception\TransformationException;
+use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use GuzzleHttp\Psr7\Uri;
 use Pbxg33k\MusicInfo\Exception\MethodNotImplementedException;
-use Pbxg33k\MusicInfo\Model\IMusicServiceEndpoint;
 use Pbxg33k\MusicInfo\Model\Track as TrackModel;
 use Pbxg33k\MusicInfo\Service\Spotify\Service as SpotifyService;
 
@@ -41,6 +41,8 @@ class Track implements IMusicServiceEndpoint
     }
 
     /**
+     * Transform single item to model
+     *
      * @param $raw
      *
      * @return TrackModel
@@ -77,7 +79,7 @@ class Track implements IMusicServiceEndpoint
             return $collection;
         }
 
-        throw new \Exception('Transformation failed');
+        throw new TransformationException('Expected object');
     }
 
     /**
@@ -102,9 +104,7 @@ class Track implements IMusicServiceEndpoint
     /**
      * @param $arguments
      *
-     * @return void
-     *
-     * @throws MethodNotImplementedException
+     * @return mixed
      */
     public function get($arguments)
     {
@@ -132,7 +132,7 @@ class Track implements IMusicServiceEndpoint
      */
     public function getById($id)
     {
-        return $this->getParent()->getApiClient()->getTrack($id);;
+        return $this->getParent()->getApiClient()->getTrack($id);
     }
 
     /**

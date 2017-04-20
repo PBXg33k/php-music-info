@@ -36,7 +36,7 @@ class Artist implements IMusicServiceEndpoint
      */
     public function setParent($parent)
     {
-        $this->setParent($parent);
+        $this->parent = $parent;
 
         return $this;
     }
@@ -120,6 +120,10 @@ class Artist implements IMusicServiceEndpoint
             ->setUri($raw->external_urls->spotify)
             ->setRawData($raw)
             ->setDataSource(self::DATA_SOURCE);
+
+        if (is_array($raw->images) && count($raw->images) >= 1) {
+            $object->setImage($raw->images[array_keys($raw->images)[0]]->url);
+        }
 
         return $object;
     }

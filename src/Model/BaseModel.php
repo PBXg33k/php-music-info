@@ -11,8 +11,12 @@
 namespace Pbxg33k\MusicInfo\Model;
 
 
-class BaseModel
+use Pbxg33k\Traits\PropertyTrait;
+
+abstract class BaseModel
 {
+    use PropertyTrait;
+
     /**
      * Data source identifier
      *
@@ -56,7 +60,7 @@ class BaseModel
     }
 
     /**
-     * @param array $rawData
+     * @param mixed $rawData
      *
      * @return BaseModel
      */

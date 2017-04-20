@@ -6,10 +6,12 @@ php:
 
 install:
   - curl -s http://getcomposer.org/installer | php
-  - php composer.phar install --dev --no-interaction
-script:
+  - php composer.phar install --dev
+before_script:
   - mkdir -p build/logs
-  - php vendor/bin/phpunit -c phpunit.xml.dist
-
+  - chmod +x bin/phpunit
+  - chmod +x bin/coveralls
+script:
+  - bin/phpunit --coverage-clover build/logs/clover.xml
 after_success:
-  - travis_retry php vendor/bin/coveralls -v
+  - travis_retry bin/coveralls -v
