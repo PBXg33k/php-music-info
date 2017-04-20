@@ -8,10 +8,10 @@
  * (c) 2017 Oguzhan uysal. All rights reserved
  ******************************************************************************/
 
-namespace Pbxg33k\MusicInfo\Exception;
+namespace Pbxg33k\MusicInfo\Job;
 
 
-class ServiceConfigurationException extends \Exception
+class SearchJob
 {
 
 }

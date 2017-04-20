@@ -8,18 +8,14 @@
  * (c) 2017 Oguzhan uysal. All rights reserved
  ******************************************************************************/
 
-namespace Pbxg33k\MusicInfo\DependencyInjection;
+namespace DependencyInjection;
+use Pbxg33k\MusicInfo\DependencyInjection\MusicInfoExtension;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
-
-class MusicInfoExtension extends Extension
+class MusicInfoExtensionTest extends \PHPUnit_Framework_TestCase
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function testExtension()
     {
-        $configuration = new Configuration;
-
-        $config = $this->processConfiguration($configuration, $configs);
-
+        $ext = new MusicInfoExtension();
+        $ext->load([], new \Symfony\Component\DependencyInjection\ContainerBuilder());
     }
 }

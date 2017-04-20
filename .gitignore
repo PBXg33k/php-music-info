@@ -1,4 +1,7 @@
-/vendor/
+vendor/
+bin/
+logs/
+
 
 tests/_output/*
-logs/
+build/logs/

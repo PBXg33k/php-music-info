@@ -8,18 +8,16 @@
  * (c) 2017 Oguzhan uysal. All rights reserved
  ******************************************************************************/
 
-namespace Pbxg33k\MusicInfo\DependencyInjection;
+namespace DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\DependencyInjection\Extension;
+use Pbxg33k\MusicInfo\DependencyInjection\Configuration;
 
-class MusicInfoExtension extends Extension
+class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
-    public function load(array $configs, ContainerBuilder $container)
+    public function testConfig()
     {
-        $configuration = new Configuration;
+        $config = new Configuration();
 
-        $config = $this->processConfiguration($configuration, $configs);
-
+        $this->assertInstanceOf(\Symfony\Component\Config\Definition\Builder\TreeBuilder::class, $config->getConfigTreeBuilder());
     }
 }

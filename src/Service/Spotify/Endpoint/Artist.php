@@ -1,10 +1,12 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: PBX_g33k
- * Date: 30-May-16
- * Time: 16:30
- */
+/*******************************************************************************
+ * This file is part of the Pbxg33k\MusicInfo package.
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * (c) 2017 Oguzhan uysal. All rights reserved
+ ******************************************************************************/
 
 namespace Pbxg33k\MusicInfo\Service\Spotify\Endpoint;
 
@@ -34,7 +36,7 @@ class Artist implements IMusicServiceEndpoint
      */
     public function setParent($parent)
     {
-        $this->setParent($parent);
+        $this->parent = $parent;
 
         return $this;
     }
@@ -118,6 +120,10 @@ class Artist implements IMusicServiceEndpoint
             ->setUri($raw->external_urls->spotify)
             ->setRawData($raw)
             ->setDataSource(self::DATA_SOURCE);
+
+        if (is_array($raw->images) && count($raw->images) >= 1) {
+            $object->setImage($raw->images[array_keys($raw->images)[0]]->url);
+        }
 
         return $object;
     }
