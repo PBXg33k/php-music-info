@@ -27,10 +27,6 @@ class SearchAlbumCommandTest extends PHPUnit_Framework_TestCase
     {
         $command = new SearchAlbumCommand();
 
-//        $musicInfo = $this->musicInfo = $this->createMock(\Pbxg33k\MusicInfo\MusicInfo::class);
-//
-//        $command->setMusicInfo($musicInfo);
-
         $this->commandTester = new CommandTester($command);
 
         parent::setUp();
@@ -41,17 +37,6 @@ class SearchAlbumCommandTest extends PHPUnit_Framework_TestCase
      */
     public function willSearchAlbumOnMultipleServices()
     {
-//        $this->musicInfo->expects($this->once())
-//            ->method('doSearch')
-//            ->willReturn([
-//                'vocadb' => [
-//                    $this->createTestAlbum('vocadb')
-//                ],
-//                'spotify' => [
-//                    $this->createTestAlbum('spotify')
-//                ]
-//            ]);
-
         $this->commandTester->execute([
             'album' => 'Tell Your World'
         ]);
@@ -67,14 +52,6 @@ class SearchAlbumCommandTest extends PHPUnit_Framework_TestCase
     public function willSearchArtistOnlyOnSelectedService()
     {
         $service = 'vocadb';
-
-//        $this->musicInfo->expects($this->once())
-//            ->method('doSearch')
-//            ->willReturn([
-//                $service => [
-//                    $this->createTestAlbum($service)
-//                ]
-//            ]);
 
         $this->commandTester->execute([
             'album' => 'Tell Your World',
