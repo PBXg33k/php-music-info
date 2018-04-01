@@ -15,7 +15,8 @@
         "jwilsson/spotify-web-api-php": "^1.3",
         "pbxg33k/musicbrainz": "^0.3.0",
         "symfony/console": "^2.8|^3.2",
-        "guzzlehttp/psr7": "^1.4"
+        "guzzlehttp/psr7": "^1.4",
+        "pbxg33k/php-info-base": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.7",

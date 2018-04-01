@@ -43,7 +43,7 @@ class BaseServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Pbxg33k\MusicInfo\Exception\ServiceConfigurationException
+     * @expectedException \Pbxg33k\InfoBase\Exception\ServiceConfigurationException
      */
     public function testInit()
     {
@@ -51,7 +51,7 @@ class BaseServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Pbxg33k\MusicInfo\Exception\ServiceConfigurationException
+     * @expectedException \Pbxg33k\InfoBase\Exception\ServiceConfigurationException
      */
     public function testArtist()
     {
@@ -59,7 +59,7 @@ class BaseServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Pbxg33k\MusicInfo\Exception\ServiceConfigurationException
+     * @expectedException \Pbxg33k\InfoBase\Exception\ServiceConfigurationException
      */
     public function testAlbum()
     {
@@ -67,7 +67,7 @@ class BaseServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Pbxg33k\MusicInfo\Exception\ServiceConfigurationException
+     * @expectedException \Pbxg33k\InfoBase\Exception\ServiceConfigurationException
      */
     public function testSong()
     {
@@ -75,7 +75,7 @@ class BaseServiceTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * @expectedException \Pbxg33k\MusicInfo\Exception\ServiceConfigurationException
+     * @expectedException \Pbxg33k\InfoBase\Exception\ServiceConfigurationException
      */
     public function testTrack()
     {

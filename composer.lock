@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "6da2971c3b8214e1555c1873f7e2b6d0",
+    "content-hash": "729810f59538caef50635cbdaba8f331",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -394,6 +394,64 @@
             ],
             "description": "A collection of traits to make life with PHP easier",
             "time": "2017-03-21T09:59:19+00:00"
+        },
+        {
+            "name": "pbxg33k/php-info-base",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PBXg33k/php-info-base.git",
+                "reference": "955f5b78e00ab90131cf636c5201645058191177"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PBXg33k/php-info-base/zipball/955f5b78e00ab90131cf636c5201645058191177",
+                "reference": "955f5b78e00ab90131cf636c5201645058191177",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/collections": "^1.3",
+                "guzzlehttp/guzzle": "^6.0",
+                "guzzlehttp/psr7": "^1.4",
+                "pbxg33k/pbxg33k-traits": "^1.0",
+                "php": "^5.6|^7.0",
+                "symfony/config": "^2.8|^3.0",
+                "symfony/console": "^2.8|^3.2",
+                "symfony/dependency-injection": "^2.8|^3.1",
+                "symfony/http-foundation": "^2.8|^3.1",
+                "symfony/http-kernel": "^2.8|^3.1",
+                "symfony/yaml": "^2.8|^3.0"
+            },
+            "require-dev": {
+                "pdepend/pdepend": "^2.5",
+                "phploc/phploc": "^3.0",
+                "phpmd/phpmd": "@stable",
+                "phpunit/phpunit": "^5.7",
+                "satooshi/php-coveralls": "^1.0",
+                "sebastian/phpcpd": "^3.0",
+                "squizlabs/php_codesniffer": "^2.8",
+                "symfony/debug": "^3.2"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Pbxg33k\\InfoBase\\": "src/"
+                }
+            },
+            "license": [
+                "LGPL-3.0"
+            ],
+            "authors": [
+                {
+                    "name": "Oguzhan Uysal",
+                    "email": "development@oguzhanuysal.eu"
+                }
+            ],
+            "support": {
+                "source": "https://github.com/PBXg33k/php-info-base/tree/master",
+                "issues": "https://github.com/PBXg33k/php-info-base/issues"
+            },
+            "time": "2018-04-01T23:34:04+00:00"
         },
         {
             "name": "pbxg33k/vocadb",
@@ -2501,6 +2559,7 @@
             "keywords": [
                 "git"
             ],
+            "abandoned": true,
             "time": "2017-01-23T20:57:12+00:00"
         },
         {
@@ -3058,6 +3117,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "pbxg33k/php-info-base": 20,
         "phpmd/phpmd": 0
     },
     "prefer-stable": false,

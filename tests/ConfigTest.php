@@ -32,7 +32,7 @@ class ConfigTest extends PHPUnit_Framework_TestCase
 
     public function testServiceConfigurationExceptionOnConstruct()
     {
-        $this->expectException(\Pbxg33k\MusicInfo\Exception\ServiceConfigurationException::class);
+        $this->expectException(\Pbxg33k\InfoBase\Exception\ServiceConfigurationException::class);
         unset($this->config[self::YAML_NAMESPACE]['services']);
         $this->musicInfo = new Pbxg33k\MusicInfo\MusicInfo($this->config[self::YAML_NAMESPACE]);
     }

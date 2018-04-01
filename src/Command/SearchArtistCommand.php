@@ -21,11 +21,6 @@ class SearchArtistCommand extends BaseCommand
 
     const COMMAND_DESCRIPTION = 'Search an artist on one or more services';
 
-    /**
-     * @var MusicInfo
-     */
-    protected $musicInfo;
-
     protected function configure()
     {
         $this
@@ -45,7 +40,7 @@ class SearchArtistCommand extends BaseCommand
     {
         $service = ($input->getArgument('service') != '') ? $input->getArgument('service') : null;
 
-        $searchResults = $this->musicInfo->doSearch($input->getArgument('artist'), 'artist', $service);
+        $searchResults = $this->infoService->doSearch($input->getArgument('artist'), 'artist', $service);
 
         $resultsTable = $this->generateTableForSearchResult(
             $searchResults, [
