@@ -101,4 +101,14 @@ abstract class BaseCommand extends Command
 
         return $table;
     }
+
+    /**
+     * @param MusicInfo $musicInfo
+     * @return BaseCommand
+     */
+    public function setMusicInfo($musicInfo)
+    {
+        $this->musicInfo = $musicInfo;
+        return $this;
+    }
 }

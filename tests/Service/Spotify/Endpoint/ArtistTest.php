@@ -42,6 +42,9 @@ class ArtistTest extends \PHPUnit_Framework_TestCase
 
     public function testArtistSearchWithServiceAsArray()
     {
+        $this->markTestIncomplete('Unit tests should only use mocked data. FIXME');
+
+
         /** @var ArrayCollection $result */
         $result = $this->musicInfo->doSearch(self::TEST_ARTIST_TITLE, 'artist', [ self::SERVICE_KEY ]);
 
@@ -51,6 +54,9 @@ class ArtistTest extends \PHPUnit_Framework_TestCase
 
     public function testArtistSearchWithServiceAsString()
     {
+        $this->markTestIncomplete('Unit tests should only use mocked data. FIXME');
+
+
         $result = $this->musicInfo->doSearch(self::TEST_ARTIST_TITLE, 'artist', self::SERVICE_KEY);
 
         $this->assertInstanceOf(ArrayCollection::class, $result);
@@ -60,6 +66,9 @@ class ArtistTest extends \PHPUnit_Framework_TestCase
 
     public function testArtistSearchByArtistName()
     {
+        $this->markTestIncomplete('Unit tests should only use mocked data. FIXME');
+
+
         $result = $this->musicInfo->getService(self::SERVICE_KEY)->artist()->getByName(self::TEST_ARTIST_TITLE);
 
         $this->assertInstanceOf(ArrayCollection::class, $result);

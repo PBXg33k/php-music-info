@@ -26,9 +26,9 @@ class SearchTrackCommandTest extends PHPUnit_Framework_TestCase
     {
         $command = new SearchTrackCommand();
 
-//        $musicInfo = $this->musicInfo = $this->createMock(\Pbxg33k\MusicInfo\MusicInfo::class);
-//
-//        $command->setMusicInfo($musicInfo);
+        $musicInfo = $this->musicInfo = $this->createMock(\Pbxg33k\MusicInfo\MusicInfo::class);
+
+        $command->setMusicInfo($musicInfo);
 
         $this->commandTester = new CommandTester($command);
 
@@ -40,16 +40,16 @@ class SearchTrackCommandTest extends PHPUnit_Framework_TestCase
      */
     public function willSearchTrackOnMultipleServices()
     {
-//        $this->musicInfo->expects($this->once())
-//            ->method('doSearch')
-//            ->willReturn([
-//                'vocadb' => [
-//                    $this->createTestTrack('vocadb')
-//                ],
-//                'spotify'=> [
-//                    $this->createTestTrack('spotify')
-//                ]
-//            ]);
+        $this->musicInfo->expects($this->once())
+            ->method('doSearch')
+            ->willReturn([
+                'vocadb' => [
+                    $this->createTestTrack('vocadb')
+                ],
+                'spotify'=> [
+                    $this->createTestTrack('spotify')
+                ]
+            ]);
 
         $this->commandTester->execute([
             'track' => 'Tell Your World'
@@ -67,13 +67,13 @@ class SearchTrackCommandTest extends PHPUnit_Framework_TestCase
     {
         $service = 'vocadb';
 
-//        $this->musicInfo->expects($this->once())
-//            ->method('doSearch')
-//            ->willReturn([
-//                $service => [
-//                    $this->createTestTrack($service)
-//                ]
-//            ]);
+        $this->musicInfo->expects($this->once())
+            ->method('doSearch')
+            ->willReturn([
+                $service => [
+                    $this->createTestTrack($service)
+                ]
+            ]);
 
         $this->commandTester->execute([
             'track' => 'Tell Your World',

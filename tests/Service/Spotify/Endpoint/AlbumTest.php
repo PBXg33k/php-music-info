@@ -40,6 +40,8 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
     public function testAlbumSearchWithServiceAsArray()
     {
+        $this->markTestIncomplete('Unit tests should only use mocked data. FIXME');
+
         /** @var ArrayCollection $result */
         $result = $this->musicInfo->doSearch(self::TEST_TITLE, 'album', [ self::SERVICE_KEY ]);
 
@@ -49,6 +51,9 @@ class AlbumTest extends \PHPUnit_Framework_TestCase
 
     public function testTrackSearchByTrackName()
     {
+        $this->markTestIncomplete('Unit tests should only use mocked data. FIXME');
+
+
         $result = $this->musicInfo->getService(self::SERVICE_KEY)->album()->getByName(self::TEST_TITLE);
 
         $this->assertInstanceOf(ArrayCollection::class, $result);
