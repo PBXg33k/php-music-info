@@ -24,7 +24,7 @@
         "symfony/debug": "^3.2",
         "phpmd/phpmd": "@stable",
         "squizlabs/php_codesniffer": "^2.8",
-        "phploc/phploc": "^3.0",
+        "phploc/phploc": "^4.0",
         "sebastian/phpcpd": "^3.0",
         "pdepend/pdepend": "^2.5"
     },
