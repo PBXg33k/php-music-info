@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a93d9cb50a0428ebddc02dc88b9ec00c",
+    "content-hash": "1c2ca29b45a1bafa7a57d0de20b82fc5",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -253,26 +253,26 @@
         },
         {
             "name": "jwilsson/spotify-web-api-php",
-            "version": "1.10.0",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jwilsson/spotify-web-api-php.git",
-                "reference": "39e5d1114c3c78727bd8154282384fcbe399173f"
+                "reference": "8b4f8c4de73be9357675627ff2ee63a4d6e55eb7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jwilsson/spotify-web-api-php/zipball/39e5d1114c3c78727bd8154282384fcbe399173f",
-                "reference": "39e5d1114c3c78727bd8154282384fcbe399173f",
+                "url": "https://api.github.com/repos/jwilsson/spotify-web-api-php/zipball/8b4f8c4de73be9357675627ff2ee63a4d6e55eb7",
+                "reference": "8b4f8c4de73be9357675627ff2ee63a4d6e55eb7",
                 "shasum": ""
             },
             "require": {
                 "ext-curl": "*",
-                "php": "^5.5 || ^7.0"
+                "php": "^5.6 || ^7.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8 || ^5.7",
-                "satooshi/php-coveralls": "dev-master",
-                "squizlabs/php_codesniffer": "^2.0"
+                "php-coveralls/php-coveralls": "^2.0",
+                "phpunit/phpunit": "^5.7 || ^6.0",
+                "squizlabs/php_codesniffer": "^3.0"
             },
             "type": "library",
             "autoload": {
@@ -295,7 +295,7 @@
             "keywords": [
                 "spotify"
             ],
-            "time": "2017-04-12T08:33:14+00:00"
+            "time": "2019-11-01T21:32:01+00:00"
         },
         {
             "name": "paragonie/random_compat",
