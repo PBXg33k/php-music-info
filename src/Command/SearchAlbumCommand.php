@@ -21,11 +21,6 @@ class SearchAlbumCommand extends BaseCommand
 
     const COMMAND_DESCRIPTION = 'Search an album on one or more services';
 
-    /**
-     * @var MusicInfo
-     */
-    protected $musicInfo;
-
     protected function configure()
     {
         $this
@@ -39,15 +34,17 @@ class SearchAlbumCommand extends BaseCommand
     {
         $service = ($input->getArgument('service') != '') ? $input->getArgument('service') : null;
 
-        $searchResult = $this->musicInfo->doSearch($input->getArgument('album'), 'album', $service);
+        $searchResult = $this->infoService->doSearch($input->getArgument('album'), 'album', $service);
 
-        $resultsTable = $this->generateTableForSearchResult($searchResult, [
+        $resultsTable = $this->generateTableForSearchResult(
+            $searchResult, [
             'id' => 'ID',
             'name' => 'Name',
             'type' => 'Type',
             'image' => 'Image',
             'dataSource' => 'Source'
-        ], new Table($output));
+            ], new Table($output)
+        );
 
         $resultsTable->render();
 

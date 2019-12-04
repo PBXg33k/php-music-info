@@ -21,11 +21,6 @@ class SearchTrackCommand extends BaseCommand
 
     const COMMAND_DESCRIPTION = 'Search a track on one or more services';
 
-    /**
-     * @var MusicInfo
-     */
-    protected $musicInfo;
-
     protected function configure()
     {
         $this
@@ -39,9 +34,10 @@ class SearchTrackCommand extends BaseCommand
     {
         $service = ($input->getArgument('service') != '') ? $input->getArgument('service') : null;
 
-        $searchResults = $this->musicInfo->doSearch($input->getArgument('track'), 'track', $service);
+        $searchResults = $this->infoService->doSearch($input->getArgument('track'), 'track', $service);
 
-        $resultsTable = $this->generateTableForSearchResult($searchResults, [
+        $resultsTable = $this->generateTableForSearchResult(
+            $searchResults, [
             'id'    => 'ID',
             'name'  => 'Name',
             'image' => 'Image URL',
@@ -49,7 +45,8 @@ class SearchTrackCommand extends BaseCommand
             'type'  => 'Type',
             'dataSource' => 'Source',
             'uri'   => 'URL'
-        ], new Table($output));
+            ], new Table($output)
+        );
 
         $resultsTable->render();
     }

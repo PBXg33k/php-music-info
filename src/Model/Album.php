@@ -14,6 +14,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Class Album
+ *
  * @package Model
  */
 class Album extends BaseModel
@@ -153,6 +154,30 @@ class Album extends BaseModel
     }
 
     /**
+     * @param Artist $artist
+     *
+     * @return $this
+     */
+    public function addArtist(Artist $artist)
+    {
+        $this->artists->add($artist);
+
+        return $this;
+    }
+
+    /**
+     * @param Artist $artist
+     *
+     * @return $this
+     */
+    public function removeArtist(Artist $artist)
+    {
+        $this->artists->removeElement($artist);
+
+        return $this;
+    }
+
+    /**
      * @return ArrayCollection
      */
     public function getTracks()
@@ -168,6 +193,30 @@ class Album extends BaseModel
     public function setTracks($tracks)
     {
         $this->tracks = $tracks;
+
+        return $this;
+    }
+
+    /**
+     * @param Track $track
+     *
+     * @return $this
+     */
+    public function addTrack(Track $track)
+    {
+        $this->tracks->add($track);
+
+        return $this;
+    }
+
+    /**
+     * @param Track $track
+     *
+     * @return $this
+     */
+    public function removeTrack(Track $track)
+    {
+        $this->tracks->removeElement($track);
 
         return $this;
     }

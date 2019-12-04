@@ -1,4 +1,6 @@
-/vendor/
-
+vendor/
+bin/
+logs/
 tests/_output/*
 build/logs/
+.idea/

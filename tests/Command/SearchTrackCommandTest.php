@@ -2,16 +2,15 @@
 /**
  * Created by PhpStorm.
  * User: oguzu
- * Date: 28-3-2017
- * Time: 20:26
+ * Date: 11-4-2017
+ * Time: 23:52
  */
 
 
-use Pbxg33k\MusicInfo\Command\SearchArtistCommand;
+use Pbxg33k\MusicInfo\Command\SearchTrackCommand;
 use Symfony\Component\Console\Tester\CommandTester;
 
-
-class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
+class SearchTrackCommandTest extends PHPUnit_Framework_TestCase
 {
     /**
      * @var CommandTester
@@ -25,7 +24,7 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
 
     public function setUp()
     {
-        $command = new SearchArtistCommand();
+        $command = new SearchTrackCommand();
 
         $musicInfo = $this->musicInfo = $this->createMock(\Pbxg33k\MusicInfo\MusicInfo::class);
 
@@ -39,21 +38,21 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function willSearchArtistOnMultipleServices()
+    public function willSearchTrackOnMultipleServices()
     {
         $this->musicInfo->expects($this->once())
             ->method('doSearch')
             ->willReturn([
                 'vocadb' => [
-                    $this->createTestArtist('vocadb')
+                    $this->createTestTrack('vocadb')
                 ],
-                'spotify' => [
-                    $this->createTestArtist('spotify')
+                'spotify'=> [
+                    $this->createTestTrack('spotify')
                 ]
             ]);
 
         $this->commandTester->execute([
-            'artist'  => 'livetune'
+            'track' => 'Tell Your World'
         ]);
 
         $output = $this->commandTester->getDisplay();
@@ -64,7 +63,7 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
     /**
      * @test
      */
-    public function willSearchArtistOnlyOnSelectedService()
+    public function willSearchTrackOnlyOnSelectedService()
     {
         $service = 'vocadb';
 
@@ -72,12 +71,12 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
             ->method('doSearch')
             ->willReturn([
                 $service => [
-                    $this->createTestArtist($service)
+                    $this->createTestTrack($service)
                 ]
             ]);
 
         $this->commandTester->execute([
-            'artist'  => 'livetune',
+            'track' => 'Tell Your World',
             'service' => $service
         ]);
 
@@ -86,19 +85,17 @@ class SearchArtistCommandTest extends PHPUnit_Framework_TestCase
         $this->assertNotContains('spotify', $output);
     }
 
-    protected function createTestArtist($service)
+    protected function createTestTrack($dataSource)
     {
-        $artist = new \Pbxg33k\MusicInfo\Model\Artist();
-        $artist
+        $track = new \Pbxg33k\MusicInfo\Model\Track();
+        $track
             ->setId(mt_rand(0,100))
             ->setName('Test name')
-            ->setImage('testimage')
-            ->setType('foo')
-            ->setUri("http://www.google.nl/")
-            ->setDataSource($service);
+            ->setImage('uri')
+            ->setLength(3939)
+            ->setUri(new \GuzzleHttp\Psr7\Uri('http://poweredby.moe/'))
+            ->setDataSource($dataSource);
 
-        return $artist;
-
+        return $track;
     }
-
 }
