@@ -1,8 +1,19 @@
 # .travis.yml
+dist: trusty
 language: php
 php:
   - 5.6
   - 7.0
+
+addons:
+  sonarcloud:
+    organization: "pbxg33k"
+    token:
+      secure: "HKlWPEpG8hxmxRZparQVKinFwIqfhKr1t703O5EspwA/nnM86SrTvi4B0iTYYrAHtmQn1XNRgLl5MOVi1VLAU5zu8q5wv8fhi6NXK7NMRPx99ELRGBVCKeBowUGD7M68wPEWq31J/IqC6FDodrFaBF3BXUrRKIRnqYARpbL3P9lIldUO3Sd2GnAG5yQ79tZwmh2/Rqg84l2RL8SAXSyRw9uS0SYeW98cPdGqPbqR00/4k5eNNW6d5Gdw5OFT1nJtC5sJUHYO0a1jmEDNA5slFiTmreEXH7W3O7TS4DtYaSHJGtjlVdbg10tmNGUlYnRQatpcGYHNnk7D6sjQdFEi19C07zbUH0dPxx8RjQ6vDXqf0noMdQG73VJbZa4fypXN3C6/DFzjJLHaFd83jGKf2cX6p79Z+KMeJJVFA8JuH+MFsXRJVGq4HGr+qbuBkoIEHpNTPtBzBtimXcDLi3/IgtdzqkaDeQIzGQKtCx3R1cemGo3/Emx5Or/ZxLYhz4J4QLZywM8kWXDlr/VFt21tUkFW5dhAo5LtFe1fqZbKQwhPFBiP9ZQGvWTWaaniYfHcoGYaoBL++z7IkKuhjRJ/x20lxZuyn89EvnBEFJj7lJEqCYLBe7pPjWQ5tA/k98dj2p7vklKxIwLS5occErgBdw9cnTL96HIM6smn+YRiXvQ="
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - sonar-scanner
 
 install:
   - curl -s http://getcomposer.org/installer | php
