@@ -3,17 +3,17 @@ music_info:
     services:
         - VocaDB
         - Spotify
+        - MusicBrainz
         # - Discogs
-        # - MusicBrainz
     preferred_order:
+#         - MusicBrainz
         - Spotify
         - VocaDB
-        # - MusicBrainz
     # Give a weight per service
     # This will be used to *guess* the correct
     # value if multiple services return different values
     service_weight:
-        - { VocaDB: 10 }
+        - { service: VocaDB, weight: 10 }
     guzzle:
         proxy: null
     # General config shared across services
